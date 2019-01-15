@@ -1,0 +1,466 @@
+BRA
+[
+    {
+        "scenario": "a2",
+        "gcm": "bccr_bcm2_0",
+        "variable": "pr",
+        "monthVals": [
+            185.9119307,
+            179.4912687,
+            201.9563387,
+            177.0913426,
+            141.9072026,
+            75.73041729,
+            25.36077901,
+            19.56156441,
+            46.01293487,
+            120.6003451,
+            164.9925405,
+            213.0492542
+        ],
+        "fromYear": 2020,
+        "toYear": 2039
+    },
+    {
+        "scenario": "b1",
+        "gcm": "bccr_bcm2_0",
+        "variable": "pr",
+        "monthVals": [
+            197.9507224,
+            183.0097443,
+            199.5386431,
+            182.6175624,
+            136.4165153,
+            74.34675163,
+            25.4942208,
+            20.12643269,
+            45.19111231,
+            119.7389798,
+            169.5458828,
+            201.009392
+        ],
+        "fromYear": 2020,
+        "toYear": 2039
+    }
+]
+USA (future)
+[
+    {
+        "scenario": "a2",
+        "gcm": "bccr_bcm2_0",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            859.8239942059615
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "bccr_bcm2_0",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            827.6155221229325
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "cccma_cgcm3_1",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            871.6962130920673
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "cccma_cgcm3_1",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            813.0897959949551
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "cnrm_cm3",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            987.7517843651068
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "cnrm_cm3",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            964.9427293696435
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "csiro_mk3_5",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            914.4892749739001
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "csiro_mk3_5",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            873.0437507916037
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "gfdl_cm2_0",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            862.2664763719782
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "gfdl_cm2_0",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            920.0169580321794
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "gfdl_cm2_1",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            878.4820392256858
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "gfdl_cm2_1",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            880.6791712126038
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "ingv_echam4",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            919.2062848249728
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "inmcm3_0",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            895.3363280260298
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "inmcm3_0",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            890.040731149454
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "ipsl_cm4",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            924.6232749957305
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "ipsl_cm4",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            902.5657086837183
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "miroc3_2_medres",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            817.447065795786
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "miroc3_2_medres",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            855.6995128717383
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "miub_echo_g",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            920.7048218268357
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "miub_echo_g",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            869.1338759159579
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "mpi_echam5",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            1080.5289311209049
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "mpi_echam5",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            1023.3920744708937
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "mri_cgcm2_3_2a",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            798.3133892715804
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "mri_cgcm2_3_2a",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            772.7346501147956
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "ukmo_hadcm3",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            927.3730832143624
+        ]
+    },
+    {
+        "scenario": "b1",
+        "gcm": "ukmo_hadcm3",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            889.5197473845144
+        ]
+    },
+    {
+        "scenario": "a2",
+        "gcm": "ukmo_hadgem1",
+        "variable": "pr",
+        "fromYear": 2080,
+        "toYear": 2099,
+        "annualData": [
+            907.0139017841842
+        ]
+    }
+]
+USA (past)
+[
+    {
+        "gcm": "bccr_bcm2_0",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            785.2701232986692
+        ]
+    },
+    {
+        "gcm": "cccma_cgcm3_1",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            777.7889471267924
+        ]
+    },
+    {
+        "gcm": "cnrm_cm3",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            947.5967851291585
+        ]
+    },
+    {
+        "gcm": "csiro_mk3_5",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            798.381580457504
+        ]
+    },
+    {
+        "gcm": "gfdl_cm2_0",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            890.4286021472773
+        ]
+    },
+    {
+        "gcm": "gfdl_cm2_1",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            827.3124179982142
+        ]
+    },
+    {
+        "gcm": "ingv_echam4",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            851.9327652092476
+        ]
+    },
+    {
+        "gcm": "inmcm3_0",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            843.0909232427455
+        ]
+    },
+    {
+        "gcm": "ipsl_cm4",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            900.6203651333254
+        ]
+    },
+    {
+        "gcm": "miroc3_2_medres",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            819.1997264378206
+        ]
+    },
+    {
+        "gcm": "miub_echo_g",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            836.9998036334464
+        ]
+    },
+    {
+        "gcm": "mpi_echam5",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            941.6353488835641
+        ]
+    },
+    {
+        "gcm": "mri_cgcm2_3_2a",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            727.9981579483319
+        ]
+    },
+    {
+        "gcm": "ukmo_hadcm3",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            848.5821514937204
+        ]
+    },
+    {
+        "gcm": "ukmo_hadgem1",
+        "variable": "pr",
+        "fromYear": 1980,
+        "toYear": 1999,
+        "annualData": [
+            831.8516144217097
+        ]
+    }
+]
