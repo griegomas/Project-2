@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <title>Climate Data Query</title>
+</head>
+
+<body>
+    <form id="media">
+        <label for="media-input">Enter ISO3</label>
+        <input type="text" id="media-input">
+        <br>
+        <input id="find-media" type="submit" value="Media Search">
+    </form>
+    <table id="search-list">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="Year"></td>
+                <td id="Data"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("#find-media").on("click", function (event) {
+
+            event.preventDefault();
+
+            var ISO3 = $("#media-input").val();
+
+            // tas = temperature; pr = precipitation 
+            var queryURL = "/api/climate/" + ISO3;
+
+            $.ajax({
+
+                url: queryURL,
+                method: "GET",
+
+            }).then(function (response) {
+                $("#search-list").empty();
+                console.log(response);
+                console.log("data[1]: " + response[1].year + " | " + response[1].data);
+
+                for (let i = 0; i < response.length; i++) {
+                    console.log("Year: " + response[i].year);
+                    console.log("Data: " + response[i].data);
+                    // console.log("Updated: " + response.results[i].dateContentUpdated);
+                    
+                    // $(function () {
+
+                    //     var headers = $("th", $("#search-list")).map(function () {
+                    //         return this.innerHTML;
+                    //     }).get();
+
+                    //     var rows = $("tbody tr", $("#search-list")).map(function () {
+                    //         return [$("td", this).map(function () {
+                    //             return this.innerHTML;
+                    //         }).get()];
+                    //     }).get();
+
+                    //     console.log(headers);
+                    //     console.log(rows);
+                    // });
+                   
+                    $("#search-list").append("Year: " + response[i].year + " | ");
+                    $("#search-list").append("Data: " + response[i].data + "<br>");
+                }
+
+            })
+        });
+    </script>
+</body>
+
+</html>
