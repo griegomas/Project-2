@@ -7,3 +7,15 @@ describe("canary test", function() {
     expect(true).to.be.true;
   });
 });
+
+describe("country selector test", function() {
+  it("If a country is selected, weather data should be returned", function() {
+    expect(true).to.be.true;
+  });
+});
+
+describe("", function() {
+  it("If a country is selected, weather data should be returned", function() {
+    expect(true).to.be.true;
+  });
+});
