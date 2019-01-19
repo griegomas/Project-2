@@ -27,7 +27,7 @@ CREATE TABLE future
 	FOREIGN KEY (ISO3future) REFERENCES past(ISO3past)
 );
 
-## Test
+### Test
 
 DROP DATABASE IF EXISTS testdb;
 CREATE DATABASE testdb;
