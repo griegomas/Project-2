@@ -9,19 +9,19 @@ var sequelize = require("../config/connection.js");
 module.exports = function(sequelize, DataTypes) {
   var Future = sequelize.define("past", {
     climateVar: {
-      type: DataType.STRING
+      type: DataTypes.STRING
     },
     fromYear: {
-      type: DataType.INTEGER
+      type: DataTypes.INTEGER
     },
     toYear: {
-      type: DataType.INTEGER
+      type: DataTypes.INTEGER
     },
     annualData: {
-      type: DataType.INTEGER
+      type: DataTypes.INTEGER
     },
     ISO3future: {
-      type: DataType.STRING
+      type: DataTypes.STRING
     }
   }, {
     timestamps: false
