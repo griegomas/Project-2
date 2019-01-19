@@ -9,7 +9,7 @@ body {
 #canvas-svg {
 }
 .land {
-  fill: #222;
+  fill: rgb(38, 0, 255);
 }
 .boundary {
   fill: none;
