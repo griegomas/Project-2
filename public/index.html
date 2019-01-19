@@ -1,36 +1,36 @@
 <<!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <title>CLIPH</title>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <title>CLIPH</title>
+        <link rel="stylesheet" type="text/css" href="styles/styles.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-</head>
+    </head>
 
-<div id="tooltip-container"></div>
+    <div id="tooltip-container"></div>
 
-<div id="canvas-svg"></div>
+    <div id="canvas-svg"></div>
 
 
-<body>
+    <body>
 
         <div id="tooltip-container"></div>
 
         <div id="canvas-svg"></div>
 
         <div class="jumbotron text-center">
-        <h1>WELCOME TO CLIPH</h1>
-        <p>Is the Globe Heating Up?</p> 
+            <h1>WELCOME TO CLIPH</h1>
+            <p>Is the Globe Heating Up?</p>
         </div>
-        
+
         <div class="container">
-        <div class="row">
-        </div>
+            <div class="row">
+            </div>
         </div>
         <select>
             <option value="AFG">Afghanistan</option>
@@ -283,45 +283,49 @@
             <option value="ZMB">Zambia</option>
             <option value="ZWE">Zimbabwe</option>
         </select>
-        </body> 
+    </body>
 
-<form id="media">
-            <label for="media-input">Enter ISO3</label>
-            <input type="text" id="media-input">
-            <br>
-            <input id="ISIS3" type="submit" value="Media Search">
-        </form>
-        <script type="text/javascript">
-            var temperatureISO3 = {};
-            $("#ISIS3").on("click", function (event) {
-                event.preventDefault();
-                var ISO3 = $("#media-input").val();
-                // tas = temperature; pr = precipitation 
-                var queryURL = "/api/climate/" + ISO3;
-                $.ajax({
-                    url: queryURL,
-                    method: "GET",
-                }).then(function (response) {
-                    $("#search-list").empty();
-                    // console.log(response);
-                    // console.log("data[1]: " + response[1].year + " | " + response[1].data);
-                    for (let i = 0; i < response.length; i++) {
-                        // console.log("Year: " + response[i].year);
-                        // console.log("Data: " + response[i].data);
+    <form id="media">
+        <label for="media-input">Enter ISO3</label>
+        <input type="text" id="media-input">
+        <br>
+        <input id="ISIS3" type="submit" value="Media Search">
+    </form>
+    <script type="text/javascript">
+        var temperatureISO3 = {};
+        $("#ISIS3").on("click", function (event) {
+            event.preventDefault();
+            var ISO3 = $("#media-input").val();
+            // tas = temperature; pr = precipitation 
+            var queryURL = "/api/climate/" + ISO3;
+            $.ajax({
+                url: queryURL,
+                method: "GET",
+            }).then(function (response) {
+                $("#search-list").empty();
+        
+                console.log("response[1]: " + response[1]);
+                // console.log("data[1]: " + response[1].year + " | " + response[1].data);
+                for (let i = 0; i < response.length; i++) {
+                    // console.log("Year: " + response[i].year);
+                    // console.log("Data: " + response[i].data);
 
-                        temperatureISO3 = {
-                            year: response[i].year,
-                            temperature: response[i].data,
-                        };
+                    temperatureISO3 = {
+                        year: response[i].year,
+                        temperature: response[i].data,
+                    };
 
-                        console.log("temperatureISO3: " + temperatureISO3.year[1]);
+                    console.log("temperatureISO3.year: " + temperatureISO3.year);
+                    console.log("temperatureISO3.temp: " + temperatureISO3.temperature);
+                    console.log("Hello, Globe!")
 
-                        // $("#search-list").append("Year: " + response[i].year + " | ");
-                        // $("#search-list").append("Data: " + response[i].data + "<br>");
-                    }
-                })
-            });
-        </script>
-<script src ="js/d3.js"></script>
-<script src ="js/index.js"></script>
-        </html>
+                    // $("#search-list").append("Year: " + response[i].year + " | ");
+                    // $("#search-list").append("Data: " + response[i].data + "<br>");
+                }
+            })
+        });
+    </script>
+    <script src="js/d3.js"></script>
+    <script src="js/index.js"></script>
+
+    </html>
