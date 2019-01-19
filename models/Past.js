@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     annualData: {
       type: DataType.INTEGER
-    }
+    },
     ISO3past: {
       type: DataType.STRING
     }
