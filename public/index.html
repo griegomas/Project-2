@@ -296,14 +296,15 @@
         $("#ISIS3").on("click", function (event) {
             event.preventDefault();
             var ISO3 = $("#media-input").val();
-            // tas = temperature; pr = precipitation 
+            // tas = temperature; pr = precipitation
+            //how is this invoking apiRouts.js? 
             var queryURL = "/api/climate/" + ISO3;
             $.ajax({
                 url: queryURL,
                 method: "GET",
             }).then(function (response) {
                 $("#search-list").empty();
-        
+
                 console.log("response[1]: " + response[1]);
                 // console.log("data[1]: " + response[1].year + " | " + response[1].data);
                 for (let i = 0; i < response.length; i++) {
@@ -318,6 +319,32 @@
                     console.log("temperatureISO3.year: " + temperatureISO3.year);
                     console.log("temperatureISO3.temp: " + temperatureISO3.temperature);
                     console.log("Hello, Globe!")
+
+                    // $("#search-list").append("Year: " + response[i].year + " | ");
+                    // $("#search-list").append("Data: " + response[i].data + "<br>");
+                }
+            })
+            var queryURL = "/api/pr/" + ISO3;
+            $.ajax({
+                url: queryURL,
+                method: "GET",
+            }).then(function (response) {
+                $("#search-list").empty();
+
+                console.log("response[1]: " + response[1]);
+                // console.log("data[1]: " + response[1].year + " | " + response[1].data);
+                for (let i = 0; i < response.length; i++) {
+                    // console.log("Year: " + response[i].year);
+                    // console.log("Data: " + response[i].data);
+
+                    preISO3 = {
+                        year: response[i].year,
+                        precipitation: response[i].data,
+                    };
+
+                    console.log("preISO3.year: " + preISO3.year);
+                    console.log("preISO3.pre: " + preISO3.precipitation);
+                    console.log("Hello, World!")
 
                     // $("#search-list").append("Year: " + response[i].year + " | ");
                     // $("#search-list").append("Data: " + response[i].data + "<br>");
