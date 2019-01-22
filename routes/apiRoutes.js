@@ -17,12 +17,21 @@ module.exports = function(app) {
     var queryURL = "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/tas/year/" + req.params.ISO3;
     axios.get(queryURL).then(
       function(response) {
-        console.log(response.data);
+        // console.log(response.data);
         res.json(response.data);
       }
     );
   });
 
+  app.get("/api/pr/:ISO3", function(req, res) {
+    var queryURL = "http://climatedataapi.worldbank.org/climateweb/rest/v1/country/cru/pr/year/" + req.params.ISO3;
+    axios.get(queryURL).then(
+      function(response) {
+        // console.log(response.data);
+        res.json(response.data);
+      }
+    );
+  });
   // var ISO3 = $("#media-input").val();
 
   // tas = temperature; pr = precipitation 
