@@ -10,23 +10,96 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
     </head>
-
+    
     <div id="tooltip-container"></div>
-
+    
     <div id="canvas-svg"></div>
-
-
+    
+    
     <body>
-
-        <div id="tooltip-container"></div>
-
-        <div id="canvas-svg"></div>
-
-        <div class="jumbotron text-center">
+    
+            <div id="tooltip-container"></div>
+    
+            <div id="canvas-svg"></div>
+    
+            <div class="jumbotron text-center">
             <h1>WELCOME TO CLIPH</h1>
-            <p>Is the Globe Heating Up?</p>
-        </div>
+            <p>Is the Globe Heating Up?</p> 
+            </div>
+    <style>
+    .jumbotron {
+      background-image: url("./styles/flames-.jpg");
+      background-size: cover;
+    }
+    body {
+            font-family: Verdana;
+            font-size: 12px;
+            padding: 10px;
+          }
+          
+          #chartdiv {
+            width: 100%;
+            height: 500px;
+          }
+          
+          #controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            font-size: 15px;
+          }
+          
+          #controls input {
+            padding: 5px;
+          }
+          
+          </style>
+    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+    <div id="chartdiv"></div>
+    <div id="controls">
+      <input type="button" value="Home" onclick="centerMap();" />
+      <input type="button" value="Zoom In" onclick="zoomIn();" />
+      <input type="button" value="Zoom Out" onclick="zoomOut();" />
+    </div>
+    <script>
+    var map = AmCharts.makeChart("chartdiv", {
+        "type": "map",
+        "dataProvider": {
+          "map": "worldLow",
+          "getAreasFromMap": true
+        },
+        "areasSettings": {
+          "autoZoom": true,
+          "selectedColor": "#CC0000"
+        },
+        "listeners": [{
+          "event": "rendered",
+          "method": function(e) {
+            // Let's log initial zoom settings (for home button)
+            var map = e.chart;
+            map.initialZoomLevel = map.zoomLevel();
+            map.initialZoomLatitude = map.zoomLatitude();
+        map.initialZoomLongitude = map.zoomLongitude();
+          }
+        }]
+      });
+      
+      function zoomIn() {
+        map.zoomIn();
+      }
+      
+      function zoomOut() {
+        map.zoomOut();
+      }
+      
+      function centerMap() {
+        map.zoomToLongLat(map.initialZoomLevel, map.initialZoomLongitude, map.initialZoomLatitude);
+      }</script>
 
         <div class="container">
             <div class="row">
@@ -352,7 +425,6 @@
             })
         });
     </script>
-    <script src="js/d3.js"></script>
-    <script src="js/index.js"></script>
+    
 
     </html>
