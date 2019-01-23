@@ -61,33 +61,63 @@
     <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
     <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
     <div id="chartdiv"></div>
+    <div id="info">Seletced countries: <span id="selected">-</span></div>
     <div id="controls">
       <input type="button" value="Home" onclick="centerMap();" />
       <input type="button" value="Zoom In" onclick="zoomIn();" />
       <input type="button" value="Zoom Out" onclick="zoomOut();" />
     </div>
     <script>
-    var map = AmCharts.makeChart("chartdiv", {
-        "type": "map",
-        "dataProvider": {
-          "map": "worldLow",
-          "getAreasFromMap": true
-        },
-        "areasSettings": {
-          "autoZoom": true,
-          "selectedColor": "#CC0000"
-        },
-        "listeners": [{
-          "event": "rendered",
-          "method": function(e) {
-            // Let's log initial zoom settings (for home button)
-            var map = e.chart;
-            map.initialZoomLevel = map.zoomLevel();
-            map.initialZoomLatitude = map.zoomLatitude();
-        map.initialZoomLongitude = map.zoomLongitude();
-          }
-        }]
-      });
+/**
+ * Create the map
+ */
+ var map = AmCharts.makeChart("chartdiv", {
+  "type": "map",
+  "theme": "light",
+  "projection": "eckert3",
+  "dataProvider": {
+    "map": "worldLow",
+    "getAreasFromMap": true
+  },
+  "areasSettings": {
+    "selectedColor": "#CC0000",
+    "selectable": true
+  },
+  /**
+   * Add click event to track country selection/unselection
+   */
+  "listeners": [{
+    "event": "clickMapObject",
+    "method": function(e) {
+      
+      // Ignore any click not on area
+      if (e.mapObject.objectType !== "MapArea")
+        return;
+      
+      var area = e.mapObject;
+      
+      // Toggle showAsSelected
+      area.showAsSelected = !area.showAsSelected;
+      e.chart.returnInitialColor(area);
+      
+      // Update the list
+      document.getElementById("selected").innerHTML = JSON.stringify(getSelectedCountries());
+    }
+  }]
+});
+
+/**
+ * Function which extracts currently selected country list.
+ * Returns array consisting of country ISO2 codes
+ */
+function getSelectedCountries() {
+  var selected = [];
+  for(var i = 0; i < map.dataProvider.areas.length; i++) {
+    if(map.dataProvider.areas[i].showAsSelected)
+      selected.push(map.dataProvider.areas[i].id);
+  }
+  return selected;
+}
       
       function zoomIn() {
         map.zoomIn();
