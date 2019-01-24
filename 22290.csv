@@ -1,0 +1,170 @@
+code,name,value,color
+AF,Afghanistan,1,#eea638
+AL,Albania,2,#d8854f
+DZ,Algeria,3,#de4c4f
+AO,Angola,4,#de4c4f
+AR,Argentina,5,#86a965
+AM,Armenia,6,#d8854f
+AU,Australia,7,#8aabb0
+AT,Austria,8,#d8854f
+AZ,Azerbaijan,9,#d8854f
+BH,Bahrain,10,#eea638
+BD,Bangladesh,11,#eea638
+BY,Belarus,12,#d8854f
+BE,Belgium,13,#d8854f
+BJ,Benin,14,#de4c4f
+BT,Bhutan,15,#eea638
+BO,Bolivia,16,#86a965
+BA,Bosnia and Herzegovina,17,#d8854f
+BW,Botswana,18,#de4c4f
+BR,Brazil,19,#86a965
+BN,Brunei,20,#eea638
+BG,Bulgaria,21,#d8854f
+BF,Burkina Faso,22,#de4c4f
+BI,Burundi,23,#de4c4f
+KH,Cambodia,24,#eea638
+CM,Cameroon,25,#de4c4f
+CA,Canada,26,#a7a737
+CV,Cape Verde,27,#de4c4f
+CF,Central African Rep.,28,#de4c4f
+TD,Chad,29,#de4c4f
+CL,Chile,30,#86a965
+CN,China,31,#eea638
+CO,Colombia,32,#86a965
+KM,Comoros,33,#de4c4f
+CD,"Congo, Dem. Rep.",34,#de4c4f
+CG,"Congo, Rep.",35,#de4c4f
+CR,Costa Rica,36,#a7a737
+CI,Cote d'Ivoire,37,#de4c4f
+HR,Croatia,38,#d8854f
+CU,Cuba,39,#a7a737
+CY,Cyprus,40,#d8854f
+CZ,Czech Rep.,41,#d8854f
+DK,Denmark,42,#d8854f
+DJ,Djibouti,43,#de4c4f
+DO,Dominican Rep.,44,#a7a737
+EC,Ecuador,45,#86a965
+EG,Egypt,46,#de4c4f
+SV,El Salvador,47,#a7a737
+GQ,Equatorial Guinea,48,#de4c4f
+ER,Eritrea,49,#de4c4f
+EE,Estonia,50,#d8854f
+ET,Ethiopia,51,#de4c4f
+FJ,Fiji,52,#8aabb0
+FI,Finland,53,#d8854f
+FR,France,54,#d8854f
+GA,Gabon,55,#de4c4f
+GM,Gambia,56,#de4c4f
+GE,Georgia,57,#d8854f
+DE,Germany,58,#d8854f
+GH,Ghana,59,#de4c4f
+GR,Greece,60,#d8854f
+GT,Guatemala,61,#a7a737
+GN,Guinea,62,#de4c4f
+GW,Guinea-Bissau,63,#de4c4f
+GY,Guyana,64,#86a965
+HT,Haiti,65,#a7a737
+HN,Honduras,66,#a7a737
+HK,"Hong Kong, China",67,#eea638
+HU,Hungary,68,#d8854f
+IS,Iceland,69,#d8854f
+IN,India,70,#eea638
+ID,Indonesia,71,#eea638
+IR,Iran,72,#eea638
+IQ,Iraq,73,#eea638
+IE,Ireland,74,#d8854f
+IL,Israel,75,#eea638
+IT,Italy,76,#d8854f
+JM,Jamaica,77,#a7a737
+JP,Japan,78,#eea638
+JO,Jordan,79,#eea638
+KZ,Kazakhstan,80,#eea638
+KE,Kenya,81,#de4c4f
+KP,"Korea, Dem. Rep.",82,#eea638
+KR,"Korea, Rep.",83,#eea638
+KW,Kuwait,84,#eea638
+KG,Kyrgyzstan,85,#eea638
+LA,Laos,86,#eea638
+LV,Latvia,87,#d8854f
+LB,Lebanon,88,#eea638
+LS,Lesotho,89,#de4c4f
+LR,Liberia,90,#de4c4f
+LY,Libya,91,#de4c4f
+LT,Lithuania,92,#d8854f
+LU,Luxembourg,93,#d8854f
+MK,"Macedonia, FYR",94,#d8854f
+MG,Madagascar,95,#de4c4f
+MW,Malawi,96,#de4c4f
+MY,Malaysia,97,#eea638
+ML,Mali,98,#de4c4f
+MR,Mauritania,99,#de4c4f
+MU,Mauritius,100,#de4c4f
+MX,Mexico,101,#a7a737
+MD,Moldova,102,#d8854f
+MN,Mongolia,103,#eea638
+ME,Montenegro,104,#d8854f
+MA,Morocco,105,#de4c4f
+MZ,Mozambique,106,#de4c4f
+MM,Myanmar,107,#eea638
+NA,Namibia,108,#de4c4f
+NP,Nepal,109,#eea638
+NL,Netherlands,110,#d8854f
+NZ,New Zealand,111,#8aabb0
+NI,Nicaragua,112,#a7a737
+NE,Niger,113,#de4c4f
+NG,Nigeria,114,#de4c4f
+NO,Norway,115,#d8854f
+OM,Oman,116,#eea638
+PK,Pakistan,117,#eea638
+PA,Panama,118,#a7a737
+PG,Papua New Guinea,119,#8aabb0
+PY,Paraguay,120,#86a965
+PE,Peru,121,#86a965
+PH,Philippines,122,#eea638
+PL,Poland,123,#d8854f
+PT,Portugal,124,#d8854f
+PR,Puerto Rico,125,#a7a737
+QA,Qatar,126,#eea638
+RO,Romania,127,#d8854f
+RU,Russia,128,#d8854f
+RW,Rwanda,129,#de4c4f
+SA,Saudi Arabia,130,#eea638
+SN,Senegal,131,#de4c4f
+RS,Serbia,132,#d8854f
+SL,Sierra Leone,133,#de4c4f
+SG,Singapore,134,#eea638
+SK,Slovak Republic,135,#d8854f
+SI,Slovenia,136,#d8854f
+SB,Solomon Islands,137,#8aabb0
+SO,Somalia,138,#de4c4f
+ZA,South Africa,139,#de4c4f
+ES,Spain,140,#d8854f
+LK,Sri Lanka,141,#eea638
+SD,Sudan,142,#de4c4f
+SR,Suriname,143,#86a965
+SZ,Swaziland,144,#de4c4f
+SE,Sweden,145,#d8854f
+CH,Switzerland,146,#d8854f
+SY,Syria,147,#eea638
+TW,Taiwan,148,#eea638
+TJ,Tajikistan,149,#eea638
+TZ,Tanzania,150,#de4c4f
+TH,Thailand,151,#eea638
+TG,Togo,152,#de4c4f
+TT,Trinidad and Tobago,153,#a7a737
+TN,Tunisia,154,#de4c4f
+TR,Turkey,155,#d8854f
+TM,Turkmenistan,156,#eea638
+UG,Uganda,157,#de4c4f
+UA,Ukraine,158,#d8854f
+AE,United Arab Emirates,159,#eea638
+GB,United Kingdom,160,#d8854f
+US,United States,161,#a7a737
+UY,Uruguay,162,#86a965
+UZ,Uzbekistan,163,#eea638
+VE,Venezuela,164,#86a965
+PS,West Bank and Gaza,165,#eea638
+VN,Vietnam,166,#eea638
+YE,"Yemen, Rep.",167,#eea638
+ZM,Zambia,168,#de4c4f
+ZW,Zimbabwe,169,#de4c4f
