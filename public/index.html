@@ -58,10 +58,12 @@
           }
           
           </style>
-    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-    <div id="chartdiv"></div>
-    <div id="info">Seletced countries: <span id="selected">-</span></div>
+   <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/dataloader/dataloader.min.js"></script>
+<div id="chartdiv"></div>
+    <div id="info">Selected countries: <span id="selected">-</span></div>
     <div id="controls">
       <input type="button" value="Home" onclick="centerMap();" />
       <input type="button" value="Zoom In" onclick="zoomIn();" />
@@ -70,7 +72,12 @@
     <script>
 /**
  * Create the map
+ * 
+ * 
  */
+
+ 
+  
  var map = AmCharts.makeChart("chartdiv", {
   "type": "map",
   "theme": "light",
@@ -79,10 +86,13 @@
     "map": "worldLow",
     "getAreasFromMap": true
   },
+  
   "areasSettings": {
     "selectedColor": "#CC0000",
-    "selectable": true
+    "selectable": true,
+    "balloonText": "<span style='font-size:14px;'><b>[[Test]]</b></span>"
   },
+  
   /**
    * Add click event to track country selection/unselection
    */
