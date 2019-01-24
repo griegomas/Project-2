@@ -1,0 +1,170 @@
+code,name,value,color
+AF,Afghanistan,4,#de4c4f
+AL,Albania,3,#de4c4f
+DZ,Algeria,4,#de4c4f
+AO,Angola,1,#de4c4f
+AR,Argentina,2,#de4c4f
+AM,Armenia,1,#de4c4f
+AU,Australia,2,#de4c4f
+AT,Austria,4,#de4c4f
+AZ,Azerbaijan,3,#de4c4f
+BH,Bahrain,4,#de4c4f
+BD,Bangladesh,1,#de4c4f
+BY,Belarus,2,#de4c4f
+BE,Belgium,1,#de4c4f
+BJ,Benin,2,#de4c4f
+BT,Bhutan,4,#de4c4f
+BO,Bolivia,3,#de4c4f
+BA,Bosnia and Herzegovina,4,#de4c4f
+BW,Botswana,1,#de4c4f
+BR,Brazil,2,#de4c4f
+BN,Brunei,1,#de4c4f
+BG,Bulgaria,2,#de4c4f
+BF,Burkina Faso,4,#de4c4f
+BI,Burundi,3,#de4c4f
+KH,Cambodia,4,#de4c4f
+CM,Cameroon,1,#de4c4f
+CA,Canada,2,#de4c4f
+CV,Cape Verde,1,#de4c4f
+CF,Central African Rep.,2,#de4c4f
+TD,Chad,4,#de4c4f
+CL,Chile,3,#de4c4f
+CN,China,4,#de4c4f
+CO,Colombia,1,#de4c4f
+KM,Comoros,2,#de4c4f
+CD,"Congo, Dem. Rep.",1,#de4c4f
+CG,"Congo, Rep.",2,#de4c4f
+CR,Costa Rica,4,#de4c4f
+CI,Cote d'Ivoire,3,#de4c4f
+HR,Croatia,4,#de4c4f
+CU,Cuba,1,#de4c4f
+CY,Cyprus,2,#de4c4f
+CZ,Czech Rep.,1,#de4c4f
+DK,Denmark,2,#de4c4f
+DJ,Djibouti,4,#de4c4f
+DO,Dominican Rep.,3,#de4c4f
+EC,Ecuador,4,#de4c4f
+EG,Egypt,1,#de4c4f
+SV,El Salvador,2,#de4c4f
+GQ,Equatorial Guinea,1,#de4c4f
+ER,Eritrea,2,#de4c4f
+EE,Estonia,4,#de4c4f
+ET,Ethiopia,3,#de4c4f
+FJ,Fiji,4,#de4c4f
+FI,Finland,1,#de4c4f
+FR,France,2,#de4c4f
+GA,Gabon,1,#de4c4f
+GM,Gambia,2,#de4c4f
+GE,Georgia,4,#de4c4f
+DE,Germany,3,#de4c4f
+GH,Ghana,4,#de4c4f
+GR,Greece,1,#de4c4f
+GT,Guatemala,2,#de4c4f
+GN,Guinea,1,#de4c4f
+GW,Guinea-Bissau,2,#de4c4f
+GY,Guyana,4,#de4c4f
+HT,Haiti,3,#de4c4f
+HN,Honduras,4,#de4c4f
+HK,"Hong Kong, China",1,#de4c4f
+HU,Hungary,2,#de4c4f
+IS,Iceland,1,#de4c4f
+IN,India,2,#de4c4f
+ID,Indonesia,4,#de4c4f
+IR,Iran,3,#de4c4f
+IQ,Iraq,4,#de4c4f
+IE,Ireland,1,#de4c4f
+IL,Israel,2,#de4c4f
+IT,Italy,1,#de4c4f
+JM,Jamaica,2,#de4c4f
+JP,Japan,4,#de4c4f
+JO,Jordan,3,#de4c4f
+KZ,Kazakhstan,4,#de4c4f
+KE,Kenya,1,#de4c4f
+KP,"Korea, Dem. Rep.",2,#de4c4f
+KR,"Korea, Rep.",1,#de4c4f
+KW,Kuwait,2,#de4c4f
+KG,Kyrgyzstan,4,#de4c4f
+LA,Laos,3,#de4c4f
+LV,Latvia,4,#de4c4f
+LB,Lebanon,1,#de4c4f
+LS,Lesotho,2,#de4c4f
+LR,Liberia,1,#de4c4f
+LY,Libya,2,#de4c4f
+LT,Lithuania,4,#de4c4f
+LU,Luxembourg,3,#de4c4f
+MK,"Macedonia, FYR",4,#de4c4f
+MG,Madagascar,1,#de4c4f
+MW,Malawi,2,#de4c4f
+MY,Malaysia,1,#de4c4f
+ML,Mali,2,#de4c4f
+MR,Mauritania,4,#de4c4f
+MU,Mauritius,3,#de4c4f
+MX,Mexico,4,#de4c4f
+MD,Moldova,1,#de4c4f
+MN,Mongolia,2,#de4c4f
+ME,Montenegro,1,#de4c4f
+MA,Morocco,2,#de4c4f
+MZ,Mozambique,4,#de4c4f
+MM,Myanmar,3,#de4c4f
+NA,Namibia,4,#de4c4f
+NP,Nepal,1,#de4c4f
+NL,Netherlands,2,#de4c4f
+NZ,New Zealand,1,#de4c4f
+NI,Nicaragua,2,#de4c4f
+NE,Niger,4,#de4c4f
+NG,Nigeria,3,#de4c4f
+NO,Norway,4,#de4c4f
+OM,Oman,1,#de4c4f
+PK,Pakistan,2,#de4c4f
+PA,Panama,1,#de4c4f
+PG,Papua New Guinea,2,#de4c4f
+PY,Paraguay,4,#de4c4f
+PE,Peru,3,#de4c4f
+PH,Philippines,4,#de4c4f
+PL,Poland,1,#de4c4f
+PT,Portugal,2,#de4c4f
+PR,Puerto Rico,1,#de4c4f
+QA,Qatar,2,#de4c4f
+RO,Romania,4,#de4c4f
+RU,Russia,3,#de4c4f
+RW,Rwanda,4,#de4c4f
+SA,Saudi Arabia,1,#de4c4f
+SN,Senegal,2,#de4c4f
+RS,Serbia,1,#de4c4f
+SL,Sierra Leone,2,#de4c4f
+SG,Singapore,4,#de4c4f
+SK,Slovak Republic,3,#de4c4f
+SI,Slovenia,4,#de4c4f
+SB,Solomon Islands,1,#de4c4f
+SO,Somalia,2,#de4c4f
+ZA,South Africa,1,#de4c4f
+ES,Spain,2,#de4c4f
+LK,Sri Lanka,4,#de4c4f
+SD,Sudan,3,#de4c4f
+SR,Suriname,4,#de4c4f
+SZ,Swaziland,1,#de4c4f
+SE,Sweden,2,#de4c4f
+CH,Switzerland,1,#de4c4f
+SY,Syria,2,#de4c4f
+TW,Taiwan,4,#de4c4f
+TJ,Tajikistan,3,#de4c4f
+TZ,Tanzania,4,#de4c4f
+TH,Thailand,1,#de4c4f
+TG,Togo,2,#de4c4f
+TT,Trinidad and Tobago,1,#de4c4f
+TN,Tunisia,2,#de4c4f
+TR,Turkey,4,#de4c4f
+TM,Turkmenistan,3,#de4c4f
+UG,Uganda,4,#de4c4f
+UA,Ukraine,1,#de4c4f
+AE,United Arab Emirates,2,#de4c4f
+GB,United Kingdom,1,#de4c4f
+US,United States,2,#de4c4f
+UY,Uruguay,4,#de4c4f
+UZ,Uzbekistan,3,#de4c4f
+VE,Venezuela,4,#de4c4f
+PS,West Bank and Gaza,1,#de4c4f
+VN,Vietnam,2,#de4c4f
+YE,"Yemen, Rep.",1,#de4c4f
+ZM,Zambia,2,#de4c4f
+ZW,Zimbabwe,2,#de4c4f
