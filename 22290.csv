@@ -1,0 +1,170 @@
+code,name,value,color
+AF,Afghanistan,111111,#de4c4f
+AL,Albania,222222,#de4c4f
+DZ,Algeria,333333,#de4c4f
+AO,Angola,444444,#de4c4f
+AR,Argentina,111111,#de4c4f
+AM,Armenia,222222,#de4c4f
+AU,Australia,333333,#de4c4f
+AT,Austria,444444,#de4c4f
+AZ,Azerbaijan,111111,#de4c4f
+BH,Bahrain,222222,#de4c4f
+BD,Bangladesh,333333,#de4c4f
+BY,Belarus,444444,#de4c4f
+BE,Belgium,111111,#de4c4f
+BJ,Benin,222222,#de4c4f
+BT,Bhutan,333333,#de4c4f
+BO,Bolivia,444444,#de4c4f
+BA,Bosnia and Herzegovina,111111,#de4c4f
+BW,Botswana,234234,#de4c4f
+BR,Brazil,345345,#de4c4f
+BN,Brunei,123123,#de4c4f
+BG,Bulgaria,123123,#de4c4f
+BF,Burkina Faso,67567.5,#de4c4f
+BI,Burundi,234234,#de4c4f
+KH,Cambodia,345345,#de4c4f
+CM,Cameroon,123123,#de4c4f
+CA,Canada,123123,#de4c4f
+CV,Cape Verde,234234,#de4c4f
+CF,Central African Rep.,345345,#de4c4f
+TD,Chad,123123,#de4c4f
+CL,Chile,123123,#de4c4f
+CN,China,234234,#de4c4f
+CO,Colombia,345345,#de4c4f
+KM,Comoros,123123,#de4c4f
+CD,"Congo, Dem. Rep.",123123,#de4c4f
+CG,"Congo, Rep.",234234,#de4c4f
+CR,Costa Rica,345345,#de4c4f
+CI,Cote d'Ivoire,123123,#de4c4f
+HR,Croatia,123123,#de4c4f
+CU,Cuba,234234,#de4c4f
+CY,Cyprus,345345,#de4c4f
+CZ,Czech Rep.,123123,#de4c4f
+DK,Denmark,123123,#de4c4f
+DJ,Djibouti,234234,#de4c4f
+DO,Dominican Rep.,345345,#de4c4f
+EC,Ecuador,123123,#de4c4f
+EG,Egypt,123123,#de4c4f
+SV,El Salvador,234234,#de4c4f
+GQ,Equatorial Guinea,345345,#de4c4f
+ER,Eritrea,123123,#de4c4f
+EE,Estonia,123123,#de4c4f
+ET,Ethiopia,234234,#de4c4f
+FJ,Fiji,345345,#de4c4f
+FI,Finland,123123,#de4c4f
+FR,France,123123,#de4c4f
+GA,Gabon,234234,#de4c4f
+GM,Gambia,345345,#de4c4f
+GE,Georgia,123123,#de4c4f
+DE,Germany,123123,#de4c4f
+GH,Ghana,234234,#de4c4f
+GR,Greece,345345,#de4c4f
+GT,Guatemala,123123,#de4c4f
+GN,Guinea,123123,#de4c4f
+GW,Guinea-Bissau,234234,#de4c4f
+GY,Guyana,345345,#de4c4f
+HT,Haiti,123123,#de4c4f
+HN,Honduras,123123,#de4c4f
+HK,"Hong Kong, China",234234,#de4c4f
+HU,Hungary,345345,#de4c4f
+IS,Iceland,123123,#de4c4f
+IN,India,123123,#de4c4f
+ID,Indonesia,234234,#de4c4f
+IR,Iran,345345,#de4c4f
+IQ,Iraq,123123,#de4c4f
+IE,Ireland,123123,#de4c4f
+IL,Israel,234234,#de4c4f
+IT,Italy,345345,#de4c4f
+JM,Jamaica,123123,#de4c4f
+JP,Japan,123123,#de4c4f
+JO,Jordan,234234,#de4c4f
+KZ,Kazakhstan,345345,#de4c4f
+KE,Kenya,234234,#de4c4f
+KP,"Korea, Dem. Rep.",345345,#de4c4f
+KR,"Korea, Rep.",123123,#de4c4f
+KW,Kuwait,123123,#de4c4f
+KG,Kyrgyzstan,345345,#de4c4f
+LA,Laos,123123,#de4c4f
+LV,Latvia,123123,#de4c4f
+LB,Lebanon,234234,#de4c4f
+LS,Lesotho,345345,#de4c4f
+LR,Liberia,123123,#de4c4f
+LY,Libya,234234,#de4c4f
+LT,Lithuania,345345,#de4c4f
+LU,Luxembourg,234234,#de4c4f
+MK,"Macedonia, FYR",345345,#de4c4f
+MG,Madagascar,234234,#de4c4f
+MW,Malawi,345345,#de4c4f
+MY,Malaysia,123123,#de4c4f
+ML,Mali,234234,#de4c4f
+MR,Mauritania,345345,#de4c4f
+MU,Mauritius,123123,#de4c4f
+MX,Mexico,234234,#de4c4f
+MD,Moldova,345345,#de4c4f
+MN,Mongolia,123123,#de4c4f
+ME,Montenegro,123123,#de4c4f
+MA,Morocco,111111,#de4c4f
+MZ,Mozambique,234234,#de4c4f
+MM,Myanmar,345345,#de4c4f
+NA,Namibia,123123,#de4c4f
+NP,Nepal,123123,#de4c4f
+NL,Netherlands,111111,#de4c4f
+NZ,New Zealand,234234,#de4c4f
+NI,Nicaragua,345345,#de4c4f
+NE,Niger,123123,#de4c4f
+NG,Nigeria,123123,#de4c4f
+NO,Norway,111111,#de4c4f
+OM,Oman,111111,#de4c4f
+PK,Pakistan,234234,#de4c4f
+PA,Panama,345345,#de4c4f
+PG,Papua New Guinea,123123,#de4c4f
+PY,Paraguay,123123,#de4c4f
+PE,Peru,111111,#de4c4f
+PH,Philippines,111111,#de4c4f
+PL,Poland,234234,#de4c4f
+PT,Portugal,345345,#de4c4f
+PR,Puerto Rico,123123,#de4c4f
+QA,Qatar,123123,#de4c4f
+RO,Romania,111111,#de4c4f
+RU,Russia,111111,#de4c4f
+RW,Rwanda,234234,#de4c4f
+SA,Saudi Arabia,345345,#de4c4f
+SN,Senegal,123123,#de4c4f
+RS,Serbia,123123,#de4c4f
+SL,Sierra Leone,234234,#de4c4f
+SG,Singapore,345345,#de4c4f
+SK,Slovak Republic,123123,#de4c4f
+SI,Slovenia,123123,#de4c4f
+SB,Solomon Islands,234234,#de4c4f
+SO,Somalia,345345,#de4c4f
+ZA,South Africa,123123,#de4c4f
+ES,Spain,123123,#de4c4f
+LK,Sri Lanka,345345,#de4c4f
+SD,Sudan,123123,#de4c4f
+SR,Suriname,123123,#de4c4f
+SZ,Swaziland,111111,#de4c4f
+SE,Sweden,111111,#de4c4f
+CH,Switzerland,111111,#de4c4f
+SY,Syria,111111,#de4c4f
+TW,Taiwan,111111,#de4c4f
+TJ,Tajikistan,234234,#de4c4f
+TZ,Tanzania,345345,#de4c4f
+TH,Thailand,123123,#de4c4f
+TG,Togo,123123,#de4c4f
+TT,Trinidad and Tobago,111111,#de4c4f
+TN,Tunisia,234234,#de4c4f
+TR,Turkey,345345,#de4c4f
+TM,Turkmenistan,123123,#de4c4f
+UG,Uganda,123123,#de4c4f
+UA,Ukraine,234234,#de4c4f
+AE,United Arab Emirates,345345,#de4c4f
+GB,United Kingdom,123123,#de4c4f
+US,United States,234234,#de4c4f
+UY,Uruguay,345345,#de4c4f
+UZ,Uzbekistan,123123,#de4c4f
+VE,Venezuela,234234,#de4c4f
+PS,West Bank and Gaza,345345,#de4c4f
+VN,Vietnam,123123,#de4c4f
+YE,"Yemen, Rep.",123123,#de4c4f
+ZM,Zambia,111111,#de4c4f
+ZW,Zimbabwe,111111,#de4c4f
