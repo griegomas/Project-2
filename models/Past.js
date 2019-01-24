@@ -6,7 +6,7 @@ var Sequelize = require("sequelize");
 // sequelize (lowercase) references my connection to the DB.
 var sequelize = require("../config/connection.js");
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Past = sequelize.define("past", {
     climateVar: {
       type: DataType.STRING
@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataType.STRING
     }
   }, {
-    timestamps: false
-  });
+      timestamps: false
+    });
   return Past;
 };
