@@ -44,4 +44,16 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+exports.convertIocCode = function(iocCode) {
+  return icoCountries[iocCode];
+};
+
+exports.convertIso2Code = function(iso2Code) {
+  return iso2Countries[iso2Code];
+};
+
+exports.convertIso3Code = function(iso3Code) {
+  return iso3Countries[iso3Code];
+};
+
 module.exports = db;
