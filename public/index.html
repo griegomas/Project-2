@@ -1,727 +1,1257 @@
-<<!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>CLIPH</title>
-        <link rel="stylesheet" type="text/css" href="styles/styles.css">
-        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <link rel="script" type="text/javascript" href="/Project-2/models/index.js"></script>
-        <script type="text/javascript">
-         var iso2Countries = {
-  TW: { ioc: "TPE", iso3: "TWN" },
-  AF: { ioc: "AFG", iso3: "AFG" },
-  AL: { ioc: "ALB", iso3: "ALB" },
-  DZ: { ioc: "ALG", iso3: "DZA" },
-  AS: { ioc: "ASA", iso3: "ASM" },
-  AD: { ioc: "AND", iso3: "AND" },
-  AO: { ioc: "ANG", iso3: "AGO" },
-  AI: { ioc: "AIA", iso3: "AIA" },
-  AQ: { ioc: null, iso3: "ATA" },
-  AG: { ioc: "ANT", iso3: "ATG" },
-  AR: { ioc: "ARG", iso3: "ARG" },
-  AM: { ioc: "ARM", iso3: "ARM" },
-  AW: { ioc: "ARU", iso3: "ABW" },
-  AU: { ioc: "AUS", iso3: "AUS" },
-  AT: { ioc: "AUT", iso3: "AUT" },
-  AZ: { ioc: "AZE", iso3: "AZE" },
-  BS: { ioc: "BAH", iso3: "BHS" },
-  BH: { ioc: "BRN", iso3: "BHR" },
-  BD: { ioc: "BAN", iso3: "BGD" },
-  BB: { ioc: "BAR", iso3: "BRB" },
-  BY: { ioc: "BLR", iso3: "BLR" },
-  BE: { ioc: "BEL", iso3: "BEL" },
-  BZ: { ioc: "BIZ", iso3: "BLZ" },
-  BJ: { ioc: "BEN", iso3: "BEN" },
-  BM: { ioc: "BER", iso3: "BMU" },
-  BT: { ioc: "BHU", iso3: "BTN" },
-  BO: { ioc: "BOL", iso3: "BOL" },
-  BQ: { ioc: "AHO", iso3: "BES" },
-  BA: { ioc: "BIH", iso3: "BIH" },
-  BW: { ioc: "BOT", iso3: "BWA" },
-  BV: { ioc: null, iso3: "BVT" },
-  BR: { ioc: "BRA", iso3: "BRA" },
-  IO: { ioc: null, iso3: "IOT" },
-  VG: { ioc: "IVB", iso3: "VGB" },
-  BN: { ioc: "BRU", iso3: "BRN" },
-  BG: { ioc: "BUL", iso3: "BGR" },
-  BF: { ioc: "BUR", iso3: "BFA" },
-  BI: { ioc: "BDI", iso3: "BDI" },
-  CV: { ioc: "CPV", iso3: "CPV" },
-  KH: { ioc: "CAM", iso3: "KHM" },
-  CM: { ioc: "CMR", iso3: "CMR" },
-  CA: { ioc: "CAN", iso3: "CAN" },
-  KY: { ioc: "CAY", iso3: "CYM" },
-  CF: { ioc: "CAF", iso3: "CAF" },
-  TD: { ioc: "CHA", iso3: "TCD" },
-  CL: { ioc: "CHI", iso3: "CHL" },
-  CN: { ioc: "CHN", iso3: "CHN" },
-  HK: { ioc: "HKG", iso3: "HKG" },
-  MO: { ioc: "MAC", iso3: "MAC" },
-  CX: { ioc: null, iso3: "CXR" },
-  CC: { ioc: null, iso3: "CCK" },
-  CO: { ioc: "COL", iso3: "COL" },
-  KM: { ioc: "COM", iso3: "COM" },
-  CG: { ioc: "CGO", iso3: "COG" },
-  CK: { ioc: "COK", iso3: "COK" },
-  CR: { ioc: "CRC", iso3: "CRI" },
-  HR: { ioc: "CRO", iso3: "HRV" },
-  CU: { ioc: "CUB", iso3: "CUB" },
-  CW: { ioc: null, iso3: "CUW" },
-  CY: { ioc: "CYP", iso3: "CYP" },
-  CZ: { ioc: "CZE", iso3: "CZE" },
-  CI: { ioc: "CIV", iso3: "CIV" },
-  KP: { ioc: "PRK", iso3: "PRK" },
-  CD: { ioc: "COD", iso3: "COD" },
-  DK: { ioc: "DEN", iso3: "DNK" },
-  DJ: { ioc: "DJI", iso3: "DJI" },
-  DM: { ioc: "DMA", iso3: "DMA" },
-  DO: { ioc: "DOM", iso3: "DOM" },
-  EC: { ioc: "ECU", iso3: "ECU" },
-  EG: { ioc: "EGY", iso3: "EGY" },
-  SV: { ioc: "ESA", iso3: "SLV" },
-  GQ: { ioc: "GEQ", iso3: "GNQ" },
-  ER: { ioc: "ERI", iso3: "ERI" },
-  EE: { ioc: "EST", iso3: "EST" },
-  ET: { ioc: "ETH", iso3: "ETH" },
-  FK: { ioc: "FLK", iso3: "FLK" },
-  FO: { ioc: "FAR", iso3: "FRO" },
-  FJ: { ioc: "FIJ", iso3: "FJI" },
-  FI: { ioc: "FIN", iso3: "FIN" },
-  FR: { ioc: "FRA", iso3: "FRA" },
-  GF: { ioc: "FGU", iso3: "GUF" },
-  PF: { ioc: "FPO", iso3: "PYF" },
-  TF: { ioc: null, iso3: "ATF" },
-  GA: { ioc: "GAB", iso3: "GAB" },
-  GM: { ioc: "GAM", iso3: "GMB" },
-  GE: { ioc: "GEO", iso3: "GEO" },
-  DE: { ioc: "GER", iso3: "DEU" },
-  GH: { ioc: "GHA", iso3: "GHA" },
-  GI: { ioc: "GIB", iso3: "GIB" },
-  GR: { ioc: "GRE", iso3: "GRC" },
-  GL: { ioc: "GRL", iso3: "GRL" },
-  GD: { ioc: "GRN", iso3: "GRD" },
-  GP: { ioc: "GUD", iso3: "GLP" },
-  GU: { ioc: "GUM", iso3: "GUM" },
-  GT: { ioc: "GUA", iso3: "GTM" },
-  GG: { ioc: null, iso3: "GGY" },
-  GN: { ioc: "GUI", iso3: "GIN" },
-  GW: { ioc: "GBS", iso3: "GNB" },
-  GY: { ioc: "GUY", iso3: "GUY" },
-  HT: { ioc: "HAI", iso3: "HTI" },
-  HM: { ioc: null, iso3: "HMD" },
-  VA: { ioc: null, iso3: "VAT" },
-  HN: { ioc: "HON", iso3: "HND" },
-  HU: { ioc: "HUN", iso3: "HUN" },
-  IS: { ioc: "ISL", iso3: "ISL" },
-  IN: { ioc: "IND", iso3: "IND" },
-  ID: { ioc: "INA", iso3: "IDN" },
-  IR: { ioc: "IRI", iso3: "IRN" },
-  IQ: { ioc: "IRQ", iso3: "IRQ" },
-  IE: { ioc: "IRL", iso3: "IRL" },
-  IM: { ioc: null, iso3: "IMN" },
-  IL: { ioc: "ISR", iso3: "ISR" },
-  IT: { ioc: "ITA", iso3: "ITA" },
-  JM: { ioc: "JAM", iso3: "JAM" },
-  JP: { ioc: "JPN", iso3: "JPN" },
-  JE: { ioc: null, iso3: "JEY" },
-  JO: { ioc: "JOR", iso3: "JOR" },
-  KZ: { ioc: "KAZ", iso3: "KAZ" },
-  KE: { ioc: "KEN", iso3: "KEN" },
-  KI: { ioc: "KIR", iso3: "KIR" },
-  KW: { ioc: "KUW", iso3: "KWT" },
-  KG: { ioc: "KGZ", iso3: "KGZ" },
-  LA: { ioc: "LAO", iso3: "LAO" },
-  LV: { ioc: "LAT", iso3: "LVA" },
-  LB: { ioc: "LIB", iso3: "LBN" },
-  LS: { ioc: "LES", iso3: "LSO" },
-  LR: { ioc: "LBR", iso3: "LBR" },
-  LY: { ioc: "LBA", iso3: "LBY" },
-  LI: { ioc: "LIE", iso3: "LIE" },
-  LT: { ioc: "LTU", iso3: "LTU" },
-  LU: { ioc: "LUX", iso3: "LUX" },
-  MG: { ioc: "MAD", iso3: "MDG" },
-  MW: { ioc: "MAW", iso3: "MWI" },
-  MY: { ioc: "MAS", iso3: "MYS" },
-  MV: { ioc: "MDV", iso3: "MDV" },
-  ML: { ioc: "MLI", iso3: "MLI" },
-  MT: { ioc: "MLT", iso3: "MLT" },
-  MH: { ioc: "MSH", iso3: "MHL" },
-  MQ: { ioc: "MRT", iso3: "MTQ" },
-  MR: { ioc: "MTN", iso3: "MRT" },
-  MU: { ioc: "MRI", iso3: "MUS" },
-  YT: { ioc: "MAY", iso3: "MYT" },
-  MX: { ioc: "MEX", iso3: "MEX" },
-  FM: { ioc: "FSM", iso3: "FSM" },
-  MC: { ioc: "MON", iso3: "MCO" },
-  MN: { ioc: "MGL", iso3: "MNG" },
-  ME: { ioc: "MGO", iso3: "MNE" },
-  MS: { ioc: "MNT", iso3: "MSR" },
-  MA: { ioc: "MAR", iso3: "MAR" },
-  MZ: { ioc: "MOZ", iso3: "MOZ" },
-  MM: { ioc: "MYA", iso3: "MMR" },
-  NA: { ioc: "NAM", iso3: "NAM" },
-  NR: { ioc: "NRU", iso3: "NRU" },
-  NP: { ioc: "NEP", iso3: "NPL" },
-  NL: { ioc: "NED", iso3: "NLD" },
-  NC: { ioc: "NCD", iso3: "NCL" },
-  NZ: { ioc: "NZL", iso3: "NZL" },
-  NI: { ioc: "NCA", iso3: "NIC" },
-  NE: { ioc: "NIG", iso3: "NER" },
-  NG: { ioc: "NGR", iso3: "NGA" },
-  NU: { ioc: "NIU", iso3: "NIU" },
-  NF: { ioc: "NFI", iso3: "NFK" },
-  MP: { ioc: "NMA", iso3: "MNP" },
-  NO: { ioc: "NOR", iso3: "NOR" },
-  OM: { ioc: "OMA", iso3: "OMN" },
-  PK: { ioc: "PAK", iso3: "PAK" },
-  PW: { ioc: "PLW", iso3: "PLW" },
-  PA: { ioc: "PAN", iso3: "PAN" },
-  PG: { ioc: "PNG", iso3: "PNG" },
-  PY: { ioc: "PAR", iso3: "PRY" },
-  PE: { ioc: "PER", iso3: "PER" },
-  PH: { ioc: "PHI", iso3: "PHL" },
-  PN: { ioc: null, iso3: "PCN" },
-  PL: { ioc: "POL", iso3: "POL" },
-  PT: { ioc: "POR", iso3: "PRT" },
-  PR: { ioc: "PUR", iso3: "PRI" },
-  QA: { ioc: "QAT", iso3: "QAT" },
-  KR: { ioc: "KOR", iso3: "KOR" },
-  MD: { ioc: "MDA", iso3: "MDA" },
-  RO: { ioc: "ROU", iso3: "ROU" },
-  RU: { ioc: "RUS", iso3: "RUS" },
-  RW: { ioc: "RWA", iso3: "RWA" },
-  RE: { ioc: "REU", iso3: "REU" },
-  BL: { ioc: null, iso3: "BLM" },
-  SH: { ioc: "HEL", iso3: "SHN" },
-  KN: { ioc: "SKN", iso3: "KNA" },
-  LC: { ioc: "LCA", iso3: "LCA" },
-  MF: { ioc: null, iso3: "MAF" },
-  PM: { ioc: "SPM", iso3: "SPM" },
-  VC: { ioc: "VIN", iso3: "VCT" },
-  WS: { ioc: "SAM", iso3: "WSM" },
-  SM: { ioc: "SMR", iso3: "SMR" },
-  ST: { ioc: "STP", iso3: "STP" },
-  null: { ioc: null, iso3: null },
-  SA: { ioc: "KSA", iso3: "SAU" },
-  SN: { ioc: "SEN", iso3: "SEN" },
-  RS: { ioc: "SRB", iso3: "SRB" },
-  SC: { ioc: "SEY", iso3: "SYC" },
-  SL: { ioc: "SLE", iso3: "SLE" },
-  SG: { ioc: "SIN", iso3: "SGP" },
-  SX: { ioc: null, iso3: "SXM" },
-  SK: { ioc: "SVK", iso3: "SVK" },
-  SI: { ioc: "SLO", iso3: "SVN" },
-  SB: { ioc: "SOL", iso3: "SLB" },
-  SO: { ioc: "SOM", iso3: "SOM" },
-  ZA: { ioc: "RSA", iso3: "ZAF" },
-  GS: { ioc: null, iso3: "SGS" },
-  SS: { ioc: null, iso3: "SSD" },
-  ES: { ioc: "ESP", iso3: "ESP" },
-  LK: { ioc: "SRI", iso3: "LKA" },
-  PS: { ioc: "PLE", iso3: "PSE" },
-  SD: { ioc: "SUD", iso3: "SDN" },
-  SR: { ioc: "SUR", iso3: "SUR" },
-  SJ: { ioc: null, iso3: "SJM" },
-  SZ: { ioc: "SWZ", iso3: "SWZ" },
-  SE: { ioc: "SWE", iso3: "SWE" },
-  CH: { ioc: "SUI", iso3: "CHE" },
-  SY: { ioc: "SYR", iso3: "SYR" },
-  TJ: { ioc: "TJK", iso3: "TJK" },
-  TH: { ioc: "THA", iso3: "THA" },
-  MK: { ioc: "MKD", iso3: "MKD" },
-  TL: { ioc: "TLS", iso3: "TLS" },
-  TG: { ioc: "TOG", iso3: "TGO" },
-  TK: { ioc: null, iso3: "TKL" },
-  TO: { ioc: "TGA", iso3: "TON" },
-  TT: { ioc: "TTO", iso3: "TTO" },
-  TN: { ioc: "TUN", iso3: "TUN" },
-  TR: { ioc: "TUR", iso3: "TUR" },
-  TM: { ioc: "TKM", iso3: "TKM" },
-  TC: { ioc: "TKS", iso3: "TCA" },
-  TV: { ioc: "TUV", iso3: "TUV" },
-  UG: { ioc: "UGA", iso3: "UGA" },
-  UA: { ioc: "UKR", iso3: "UKR" },
-  AE: { ioc: "UAE", iso3: "ARE" },
-  GB: { ioc: "GBR", iso3: "GBR" },
-  TZ: { ioc: "TAN", iso3: "TZA" },
-  UM: { ioc: null, iso3: "UMI" },
-  VI: { ioc: "ISV", iso3: "VIR" },
-  US: { ioc: "USA", iso3: "USA" },
-  UY: { ioc: "URU", iso3: "URY" },
-  UZ: { ioc: "UZB", iso3: "UZB" },
-  VU: { ioc: "VAN", iso3: "VUT" },
-  VE: { ioc: "VEN", iso3: "VEN" },
-  VN: { ioc: "VIE", iso3: "VNM" },
-  WF: { ioc: "WAF", iso3: "WLF" },
-  EH: { ioc: null, iso3: "ESH" },
-  YE: { ioc: "YEM", iso3: "YEM" },
-  ZM: { ioc: "ZAM", iso3: "ZMB" },
-  ZW: { ioc: "ZIM", iso3: "ZWE" },
-  AX: { ioc: null, iso3: "ALA" }
-};
-        </script>
+  <head>
+    <meta charset="UTF-8">
+    <title>CLIPH</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="script" type="text/javascript" href="/Project-2/models/index.js">
 
-        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-    </head>
-    
+    <script type="text/javascript">
+      var iso2Countries = {
+        TW: {
+          ioc: "TPE",
+          iso3: "TWN"
+        },
+        AF: {
+          ioc: "AFG",
+          iso3: "AFG"
+        },
+        AL: {
+          ioc: "ALB",
+          iso3: "ALB"
+        },
+        DZ: {
+          ioc: "ALG",
+          iso3: "DZA"
+        },
+        AS: {
+          ioc: "ASA",
+          iso3: "ASM"
+        },
+        AD: {
+          ioc: "AND",
+          iso3: "AND"
+        },
+        AO: {
+          ioc: "ANG",
+          iso3: "AGO"
+        },
+        AI: {
+          ioc: "AIA",
+          iso3: "AIA"
+        },
+        AQ: {
+          ioc: null,
+          iso3: "ATA"
+        },
+        AG: {
+          ioc: "ANT",
+          iso3: "ATG"
+        },
+        AR: {
+          ioc: "ARG",
+          iso3: "ARG"
+        },
+        AM: {
+          ioc: "ARM",
+          iso3: "ARM"
+        },
+        AW: {
+          ioc: "ARU",
+          iso3: "ABW"
+        },
+        AU: {
+          ioc: "AUS",
+          iso3: "AUS"
+        },
+        AT: {
+          ioc: "AUT",
+          iso3: "AUT"
+        },
+        AZ: {
+          ioc: "AZE",
+          iso3: "AZE"
+        },
+        BS: {
+          ioc: "BAH",
+          iso3: "BHS"
+        },
+        BH: {
+          ioc: "BRN",
+          iso3: "BHR"
+        },
+        BD: {
+          ioc: "BAN",
+          iso3: "BGD"
+        },
+        BB: {
+          ioc: "BAR",
+          iso3: "BRB"
+        },
+        BY: {
+          ioc: "BLR",
+          iso3: "BLR"
+        },
+        BE: {
+          ioc: "BEL",
+          iso3: "BEL"
+        },
+        BZ: {
+          ioc: "BIZ",
+          iso3: "BLZ"
+        },
+        BJ: {
+          ioc: "BEN",
+          iso3: "BEN"
+        },
+        BM: {
+          ioc: "BER",
+          iso3: "BMU"
+        },
+        BT: {
+          ioc: "BHU",
+          iso3: "BTN"
+        },
+        BO: {
+          ioc: "BOL",
+          iso3: "BOL"
+        },
+        BQ: {
+          ioc: "AHO",
+          iso3: "BES"
+        },
+        BA: {
+          ioc: "BIH",
+          iso3: "BIH"
+        },
+        BW: {
+          ioc: "BOT",
+          iso3: "BWA"
+        },
+        BV: {
+          ioc: null,
+          iso3: "BVT"
+        },
+        BR: {
+          ioc: "BRA",
+          iso3: "BRA"
+        },
+        IO: {
+          ioc: null,
+          iso3: "IOT"
+        },
+        VG: {
+          ioc: "IVB",
+          iso3: "VGB"
+        },
+        BN: {
+          ioc: "BRU",
+          iso3: "BRN"
+        },
+        BG: {
+          ioc: "BUL",
+          iso3: "BGR"
+        },
+        BF: {
+          ioc: "BUR",
+          iso3: "BFA"
+        },
+        BI: {
+          ioc: "BDI",
+          iso3: "BDI"
+        },
+        CV: {
+          ioc: "CPV",
+          iso3: "CPV"
+        },
+        KH: {
+          ioc: "CAM",
+          iso3: "KHM"
+        },
+        CM: {
+          ioc: "CMR",
+          iso3: "CMR"
+        },
+        CA: {
+          ioc: "CAN",
+          iso3: "CAN"
+        },
+        KY: {
+          ioc: "CAY",
+          iso3: "CYM"
+        },
+        CF: {
+          ioc: "CAF",
+          iso3: "CAF"
+        },
+        TD: {
+          ioc: "CHA",
+          iso3: "TCD"
+        },
+        CL: {
+          ioc: "CHI",
+          iso3: "CHL"
+        },
+        CN: {
+          ioc: "CHN",
+          iso3: "CHN"
+        },
+        HK: {
+          ioc: "HKG",
+          iso3: "HKG"
+        },
+        MO: {
+          ioc: "MAC",
+          iso3: "MAC"
+        },
+        CX: {
+          ioc: null,
+          iso3: "CXR"
+        },
+        CC: {
+          ioc: null,
+          iso3: "CCK"
+        },
+        CO: {
+          ioc: "COL",
+          iso3: "COL"
+        },
+        KM: {
+          ioc: "COM",
+          iso3: "COM"
+        },
+        CG: {
+          ioc: "CGO",
+          iso3: "COG"
+        },
+        CK: {
+          ioc: "COK",
+          iso3: "COK"
+        },
+        CR: {
+          ioc: "CRC",
+          iso3: "CRI"
+        },
+        HR: {
+          ioc: "CRO",
+          iso3: "HRV"
+        },
+        CU: {
+          ioc: "CUB",
+          iso3: "CUB"
+        },
+        CW: {
+          ioc: null,
+          iso3: "CUW"
+        },
+        CY: {
+          ioc: "CYP",
+          iso3: "CYP"
+        },
+        CZ: {
+          ioc: "CZE",
+          iso3: "CZE"
+        },
+        CI: {
+          ioc: "CIV",
+          iso3: "CIV"
+        },
+        KP: {
+          ioc: "PRK",
+          iso3: "PRK"
+        },
+        CD: {
+          ioc: "COD",
+          iso3: "COD"
+        },
+        DK: {
+          ioc: "DEN",
+          iso3: "DNK"
+        },
+        DJ: {
+          ioc: "DJI",
+          iso3: "DJI"
+        },
+        DM: {
+          ioc: "DMA",
+          iso3: "DMA"
+        },
+        DO: {
+          ioc: "DOM",
+          iso3: "DOM"
+        },
+        EC: {
+          ioc: "ECU",
+          iso3: "ECU"
+        },
+        EG: {
+          ioc: "EGY",
+          iso3: "EGY"
+        },
+        SV: {
+          ioc: "ESA",
+          iso3: "SLV"
+        },
+        GQ: {
+          ioc: "GEQ",
+          iso3: "GNQ"
+        },
+        ER: {
+          ioc: "ERI",
+          iso3: "ERI"
+        },
+        EE: {
+          ioc: "EST",
+          iso3: "EST"
+        },
+        ET: {
+          ioc: "ETH",
+          iso3: "ETH"
+        },
+        FK: {
+          ioc: "FLK",
+          iso3: "FLK"
+        },
+        FO: {
+          ioc: "FAR",
+          iso3: "FRO"
+        },
+        FJ: {
+          ioc: "FIJ",
+          iso3: "FJI"
+        },
+        FI: {
+          ioc: "FIN",
+          iso3: "FIN"
+        },
+        FR: {
+          ioc: "FRA",
+          iso3: "FRA"
+        },
+        GF: {
+          ioc: "FGU",
+          iso3: "GUF"
+        },
+        PF: {
+          ioc: "FPO",
+          iso3: "PYF"
+        },
+        TF: {
+          ioc: null,
+          iso3: "ATF"
+        },
+        GA: {
+          ioc: "GAB",
+          iso3: "GAB"
+        },
+        GM: {
+          ioc: "GAM",
+          iso3: "GMB"
+        },
+        GE: {
+          ioc: "GEO",
+          iso3: "GEO"
+        },
+        DE: {
+          ioc: "GER",
+          iso3: "DEU"
+        },
+        GH: {
+          ioc: "GHA",
+          iso3: "GHA"
+        },
+        GI: {
+          ioc: "GIB",
+          iso3: "GIB"
+        },
+        GR: {
+          ioc: "GRE",
+          iso3: "GRC"
+        },
+        GL: {
+          ioc: "GRL",
+          iso3: "GRL"
+        },
+        GD: {
+          ioc: "GRN",
+          iso3: "GRD"
+        },
+        GP: {
+          ioc: "GUD",
+          iso3: "GLP"
+        },
+        GU: {
+          ioc: "GUM",
+          iso3: "GUM"
+        },
+        GT: {
+          ioc: "GUA",
+          iso3: "GTM"
+        },
+        GG: {
+          ioc: null,
+          iso3: "GGY"
+        },
+        GN: {
+          ioc: "GUI",
+          iso3: "GIN"
+        },
+        GW: {
+          ioc: "GBS",
+          iso3: "GNB"
+        },
+        GY: {
+          ioc: "GUY",
+          iso3: "GUY"
+        },
+        HT: {
+          ioc: "HAI",
+          iso3: "HTI"
+        },
+        HM: {
+          ioc: null,
+          iso3: "HMD"
+        },
+        VA: {
+          ioc: null,
+          iso3: "VAT"
+        },
+        HN: {
+          ioc: "HON",
+          iso3: "HND"
+        },
+        HU: {
+          ioc: "HUN",
+          iso3: "HUN"
+        },
+        IS: {
+          ioc: "ISL",
+          iso3: "ISL"
+        },
+        IN: {
+          ioc: "IND",
+          iso3: "IND"
+        },
+        ID: {
+          ioc: "INA",
+          iso3: "IDN"
+        },
+        IR: {
+          ioc: "IRI",
+          iso3: "IRN"
+        },
+        IQ: {
+          ioc: "IRQ",
+          iso3: "IRQ"
+        },
+        IE: {
+          ioc: "IRL",
+          iso3: "IRL"
+        },
+        IM: {
+          ioc: null,
+          iso3: "IMN"
+        },
+        IL: {
+          ioc: "ISR",
+          iso3: "ISR"
+        },
+        IT: {
+          ioc: "ITA",
+          iso3: "ITA"
+        },
+        JM: {
+          ioc: "JAM",
+          iso3: "JAM"
+        },
+        JP: {
+          ioc: "JPN",
+          iso3: "JPN"
+        },
+        JE: {
+          ioc: null,
+          iso3: "JEY"
+        },
+        JO: {
+          ioc: "JOR",
+          iso3: "JOR"
+        },
+        KZ: {
+          ioc: "KAZ",
+          iso3: "KAZ"
+        },
+        KE: {
+          ioc: "KEN",
+          iso3: "KEN"
+        },
+        KI: {
+          ioc: "KIR",
+          iso3: "KIR"
+        },
+        KW: {
+          ioc: "KUW",
+          iso3: "KWT"
+        },
+        KG: {
+          ioc: "KGZ",
+          iso3: "KGZ"
+        },
+        LA: {
+          ioc: "LAO",
+          iso3: "LAO"
+        },
+        LV: {
+          ioc: "LAT",
+          iso3: "LVA"
+        },
+        LB: {
+          ioc: "LIB",
+          iso3: "LBN"
+        },
+        LS: {
+          ioc: "LES",
+          iso3: "LSO"
+        },
+        LR: {
+          ioc: "LBR",
+          iso3: "LBR"
+        },
+        LY: {
+          ioc: "LBA",
+          iso3: "LBY"
+        },
+        LI: {
+          ioc: "LIE",
+          iso3: "LIE"
+        },
+        LT: {
+          ioc: "LTU",
+          iso3: "LTU"
+        },
+        LU: {
+          ioc: "LUX",
+          iso3: "LUX"
+        },
+        MG: {
+          ioc: "MAD",
+          iso3: "MDG"
+        },
+        MW: {
+          ioc: "MAW",
+          iso3: "MWI"
+        },
+        MY: {
+          ioc: "MAS",
+          iso3: "MYS"
+        },
+        MV: {
+          ioc: "MDV",
+          iso3: "MDV"
+        },
+        ML: {
+          ioc: "MLI",
+          iso3: "MLI"
+        },
+        MT: {
+          ioc: "MLT",
+          iso3: "MLT"
+        },
+        MH: {
+          ioc: "MSH",
+          iso3: "MHL"
+        },
+        MQ: {
+          ioc: "MRT",
+          iso3: "MTQ"
+        },
+        MR: {
+          ioc: "MTN",
+          iso3: "MRT"
+        },
+        MU: {
+          ioc: "MRI",
+          iso3: "MUS"
+        },
+        YT: {
+          ioc: "MAY",
+          iso3: "MYT"
+        },
+        MX: {
+          ioc: "MEX",
+          iso3: "MEX"
+        },
+        FM: {
+          ioc: "FSM",
+          iso3: "FSM"
+        },
+        MC: {
+          ioc: "MON",
+          iso3: "MCO"
+        },
+        MN: {
+          ioc: "MGL",
+          iso3: "MNG"
+        },
+        ME: {
+          ioc: "MGO",
+          iso3: "MNE"
+        },
+        MS: {
+          ioc: "MNT",
+          iso3: "MSR"
+        },
+        MA: {
+          ioc: "MAR",
+          iso3: "MAR"
+        },
+        MZ: {
+          ioc: "MOZ",
+          iso3: "MOZ"
+        },
+        MM: {
+          ioc: "MYA",
+          iso3: "MMR"
+        },
+        NA: {
+          ioc: "NAM",
+          iso3: "NAM"
+        },
+        NR: {
+          ioc: "NRU",
+          iso3: "NRU"
+        },
+        NP: {
+          ioc: "NEP",
+          iso3: "NPL"
+        },
+        NL: {
+          ioc: "NED",
+          iso3: "NLD"
+        },
+        NC: {
+          ioc: "NCD",
+          iso3: "NCL"
+        },
+        NZ: {
+          ioc: "NZL",
+          iso3: "NZL"
+        },
+        NI: {
+          ioc: "NCA",
+          iso3: "NIC"
+        },
+        NE: {
+          ioc: "NIG",
+          iso3: "NER"
+        },
+        NG: {
+          ioc: "NGR",
+          iso3: "NGA"
+        },
+        NU: {
+          ioc: "NIU",
+          iso3: "NIU"
+        },
+        NF: {
+          ioc: "NFI",
+          iso3: "NFK"
+        },
+        MP: {
+          ioc: "NMA",
+          iso3: "MNP"
+        },
+        NO: {
+          ioc: "NOR",
+          iso3: "NOR"
+        },
+        OM: {
+          ioc: "OMA",
+          iso3: "OMN"
+        },
+        PK: {
+          ioc: "PAK",
+          iso3: "PAK"
+        },
+        PW: {
+          ioc: "PLW",
+          iso3: "PLW"
+        },
+        PA: {
+          ioc: "PAN",
+          iso3: "PAN"
+        },
+        PG: {
+          ioc: "PNG",
+          iso3: "PNG"
+        },
+        PY: {
+          ioc: "PAR",
+          iso3: "PRY"
+        },
+        PE: {
+          ioc: "PER",
+          iso3: "PER"
+        },
+        PH: {
+          ioc: "PHI",
+          iso3: "PHL"
+        },
+        PN: {
+          ioc: null,
+          iso3: "PCN"
+        },
+        PL: {
+          ioc: "POL",
+          iso3: "POL"
+        },
+        PT: {
+          ioc: "POR",
+          iso3: "PRT"
+        },
+        PR: {
+          ioc: "PUR",
+          iso3: "PRI"
+        },
+        QA: {
+          ioc: "QAT",
+          iso3: "QAT"
+        },
+        KR: {
+          ioc: "KOR",
+          iso3: "KOR"
+        },
+        MD: {
+          ioc: "MDA",
+          iso3: "MDA"
+        },
+        RO: {
+          ioc: "ROU",
+          iso3: "ROU"
+        },
+        RU: {
+          ioc: "RUS",
+          iso3: "RUS"
+        },
+        RW: {
+          ioc: "RWA",
+          iso3: "RWA"
+        },
+        RE: {
+          ioc: "REU",
+          iso3: "REU"
+        },
+        BL: {
+          ioc: null,
+          iso3: "BLM"
+        },
+        SH: {
+          ioc: "HEL",
+          iso3: "SHN"
+        },
+        KN: {
+          ioc: "SKN",
+          iso3: "KNA"
+        },
+        LC: {
+          ioc: "LCA",
+          iso3: "LCA"
+        },
+        MF: {
+          ioc: null,
+          iso3: "MAF"
+        },
+        PM: {
+          ioc: "SPM",
+          iso3: "SPM"
+        },
+        VC: {
+          ioc: "VIN",
+          iso3: "VCT"
+        },
+        WS: {
+          ioc: "SAM",
+          iso3: "WSM"
+        },
+        SM: {
+          ioc: "SMR",
+          iso3: "SMR"
+        },
+        ST: {
+          ioc: "STP",
+          iso3: "STP"
+        },
+        null: {
+          ioc: null,
+          iso3: null
+        },
+        SA: {
+          ioc: "KSA",
+          iso3: "SAU"
+        },
+        SN: {
+          ioc: "SEN",
+          iso3: "SEN"
+        },
+        RS: {
+          ioc: "SRB",
+          iso3: "SRB"
+        },
+        SC: {
+          ioc: "SEY",
+          iso3: "SYC"
+        },
+        SL: {
+          ioc: "SLE",
+          iso3: "SLE"
+        },
+        SG: {
+          ioc: "SIN",
+          iso3: "SGP"
+        },
+        SX: {
+          ioc: null,
+          iso3: "SXM"
+        },
+        SK: {
+          ioc: "SVK",
+          iso3: "SVK"
+        },
+        SI: {
+          ioc: "SLO",
+          iso3: "SVN"
+        },
+        SB: {
+          ioc: "SOL",
+          iso3: "SLB"
+        },
+        SO: {
+          ioc: "SOM",
+          iso3: "SOM"
+        },
+        ZA: {
+          ioc: "RSA",
+          iso3: "ZAF"
+        },
+        GS: {
+          ioc: null,
+          iso3: "SGS"
+        },
+        SS: {
+          ioc: null,
+          iso3: "SSD"
+        },
+        ES: {
+          ioc: "ESP",
+          iso3: "ESP"
+        },
+        LK: {
+          ioc: "SRI",
+          iso3: "LKA"
+        },
+        PS: {
+          ioc: "PLE",
+          iso3: "PSE"
+        },
+        SD: {
+          ioc: "SUD",
+          iso3: "SDN"
+        },
+        SR: {
+          ioc: "SUR",
+          iso3: "SUR"
+        },
+        SJ: {
+          ioc: null,
+          iso3: "SJM"
+        },
+        SZ: {
+          ioc: "SWZ",
+          iso3: "SWZ"
+        },
+        SE: {
+          ioc: "SWE",
+          iso3: "SWE"
+        },
+        CH: {
+          ioc: "SUI",
+          iso3: "CHE"
+        },
+        SY: {
+          ioc: "SYR",
+          iso3: "SYR"
+        },
+        TJ: {
+          ioc: "TJK",
+          iso3: "TJK"
+        },
+        TH: {
+          ioc: "THA",
+          iso3: "THA"
+        },
+        MK: {
+          ioc: "MKD",
+          iso3: "MKD"
+        },
+        TL: {
+          ioc: "TLS",
+          iso3: "TLS"
+        },
+        TG: {
+          ioc: "TOG",
+          iso3: "TGO"
+        },
+        TK: {
+          ioc: null,
+          iso3: "TKL"
+        },
+        TO: {
+          ioc: "TGA",
+          iso3: "TON"
+        },
+        TT: {
+          ioc: "TTO",
+          iso3: "TTO"
+        },
+        TN: {
+          ioc: "TUN",
+          iso3: "TUN"
+        },
+        TR: {
+          ioc: "TUR",
+          iso3: "TUR"
+        },
+        TM: {
+          ioc: "TKM",
+          iso3: "TKM"
+        },
+        TC: {
+          ioc: "TKS",
+          iso3: "TCA"
+        },
+        TV: {
+          ioc: "TUV",
+          iso3: "TUV"
+        },
+        UG: {
+          ioc: "UGA",
+          iso3: "UGA"
+        },
+        UA: {
+          ioc: "UKR",
+          iso3: "UKR"
+        },
+        AE: {
+          ioc: "UAE",
+          iso3: "ARE"
+        },
+        GB: {
+          ioc: "GBR",
+          iso3: "GBR"
+        },
+        TZ: {
+          ioc: "TAN",
+          iso3: "TZA"
+        },
+        UM: {
+          ioc: null,
+          iso3: "UMI"
+        },
+        VI: {
+          ioc: "ISV",
+          iso3: "VIR"
+        },
+        US: {
+          ioc: "USA",
+          iso3: "USA"
+        },
+        UY: {
+          ioc: "URU",
+          iso3: "URY"
+        },
+        UZ: {
+          ioc: "UZB",
+          iso3: "UZB"
+        },
+        VU: {
+          ioc: "VAN",
+          iso3: "VUT"
+        },
+        VE: {
+          ioc: "VEN",
+          iso3: "VEN"
+        },
+        VN: {
+          ioc: "VIE",
+          iso3: "VNM"
+        },
+        WF: {
+          ioc: "WAF",
+          iso3: "WLF"
+        },
+        EH: {
+          ioc: null,
+          iso3: "ESH"
+        },
+        YE: {
+          ioc: "YEM",
+          iso3: "YEM"
+        },
+        ZM: {
+          ioc: "ZAM",
+          iso3: "ZMB"
+        },
+        ZW: {
+          ioc: "ZIM",
+          iso3: "ZWE"
+        },
+        AX: {
+          ioc: null,
+          iso3: "ALA"
+        }
+      };
+    </script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <div id="tooltip-container"></div>
+
+  <div id="canvas-svg"></div>
+
+  <body>
+
     <div id="tooltip-container"></div>
-    
+
     <div id="canvas-svg"></div>
-    
-    
-    <body>
-    
-            <div id="tooltip-container"></div>
-    
-            <div id="canvas-svg"></div>
-    
-            <div class="jumbotron text-center">
-            <h1>WELCOME TO CLIPH</h1>
-            <p>Is the Globe Heating Up?</p> 
-            </div>
+
+    <div class="jumbotron text-center">
+      <h1>WELCOME TO CLIPH</h1>
+      <p>Is the Globe Heating Up?</p>
+    </div>
     <style>
-    .jumbotron {
-      background-image: url("./styles/flames-.jpg");
-      background-size: cover;
-    }
-    body {
-            font-family: Verdana;
-            font-size: 12px;
-            padding: 10px;
-          }
-          
-          #chartdiv {
-            width: 100%;
-            height: 500px;
-          }
-          
-          #controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            font-size: 15px;
-          }
-          
-          #controls input {
-            padding: 5px;
-          }
-          
-          </style>
+      .jumbotron {
+        background-image: url("./styles/flames-.jpg");
+        background-size: cover;
+      }
+
+      body {
+        font-family: Verdana;
+        font-size: 12px;
+        padding: 10px;
+      }
+
+      #chartdiv {
+        width: 100%;
+        height: 500px;
+      }
+
+      #controls {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      #controls input {
+        padding: 5px;
+      }
+    </style>
     <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
     <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
     <div id="chartdiv"></div>
-    <div id="info">Seletced countries: <span id="selected">-</span></div>
+    <div id="info">Seletced countries:
+      <span id="selected">-</span></div>
     <div id="controls">
-      <input type="button" value="Home" onclick="centerMap();" />
-      <input type="button" value="Zoom In" onclick="zoomIn();" />
-      <input type="button" value="Zoom Out" onclick="zoomOut();" />
+      <input type="button" value="Home" onclick="centerMap();"/>
+      <input type="button" value="Zoom In" onclick="zoomIn();"/>
+      <input type="button" value="Zoom Out" onclick="zoomOut();"/>
     </div>
     <script>
-/**
- * Create the map
- */
- var map = AmCharts.makeChart("chartdiv", {
-  "type": "map",
-  "theme": "light",
-  "projection": "eckert3",
-  "dataProvider": {
-    "map": "worldLow",
-    "getAreasFromMap": true
-  },
-  "areasSettings": {
-    "selectedColor": "#CC0000",
-    "selectable": true
-  },
-  /**
-   * Add click event to track country selection/unselection
-   */
-  "listeners": [{
-    "event": "clickMapObject",
-    "method": function(e) {
-      
-      // Ignore any click not on area
-      if (e.mapObject.objectType !== "MapArea")
-        return;
-      
-      var area = e.mapObject;
-      
-      // Toggle showAsSelected
-      area.showAsSelected = !area.showAsSelected;
-      e.chart.returnInitialColor(area);
-      
-      // Update the list
-      document.getElementById("selected").innerHTML = JSON.stringify(getSelectedCountries());
-      
-      // Convert ISO2 > ISO3 ??
-      console.log("working function: " + convertSelected(getSelectedCountries()));
-    }
-  }]
-});
+      /**
+         * Create the map
+         */
+      var map = AmCharts.makeChart("chartdiv", {
+        "type": "map",
+        "theme": "light",
+        "projection": "eckert3",
+        "dataProvider": {
+          "map": "worldLow",
+          "getAreasFromMap": true
+        },
+        "areasSettings": {
+          "selectedColor": "#CC0000",
+          "selectable": true
+        },
+        /**
+             * Add click event to track country selection/unselection
+             */
+        "listeners": [
+          {
+            "event": "clickMapObject",
+            "method": function (e) {
 
-/**
- * Function which extracts currently selected country list.
- * Returns array consisting of country ISO2 codes
- */
-function getSelectedCountries() {
-  var selected = [];
-  for(var i = 0; i < map.dataProvider.areas.length; i++) {
-    if(map.dataProvider.areas[i].showAsSelected)
-      selected.push(map.dataProvider.areas[i].id);
-  }
-  console.log("GET selected: " + selected);
-  return selected;
-}
-function convertSelected(selectedISO) {
-  for(var i = 0; i < iso2Countries.length; i++) {
-    if(iso2Countries = selectedISO)
-      selectedISO += iso2Countries; 
-  }
-  console.log("selectedISO3: " + iso2Countries);
-  return selectedISO;
-}
-      
+              // Ignore any click not on area
+              if (e.mapObject.objectType !== "MapArea") 
+                return;
+              
+              var area = e.mapObject;
+
+              // Toggle showAsSelected
+              area.showAsSelected = !area.showAsSelected;
+              e
+                .chart
+                .returnInitialColor(area);
+
+              // Update the list
+              document
+                .getElementById("selected")
+                .innerHTML = JSON.stringify(getSelectedCountries());
+
+              // Convert ISO2 > ISO3 ??
+              console.log("working function: " + convertSelected(getSelectedCountries()));
+            }
+          }
+        ]
+      });
+
+      /**
+         * Function which extracts currently selected country list.
+         * Returns array consisting of country ISO2 codes
+         */
+      function getSelectedCountries() {
+        var selected = [];
+        for (var i = 0; i < map.dataProvider.areas.length; i++) {
+          if (map.dataProvider.areas[i].showAsSelected) 
+            selected.push(map.dataProvider.areas[i].id);
+          }
+        console.log("GET selected: " + selected);
+        return selected;
+      }
+
+      function convertSelected(e) {
+        var selectedISO3 = [];
+        for (var i = 0; i < e.length; i++) {
+
+          selectedISO3.push(iso2Countries[e[i]].iso3);
+        }
+
+        console.log("selectedISO3: " + selectedISO3);
+        return selectedISO3;
+      }
+
       function zoomIn() {
         map.zoomIn();
       }
-      
+
       function zoomOut() {
         map.zoomOut();
       }
-      
+
       function centerMap() {
         map.zoomToLongLat(map.initialZoomLevel, map.initialZoomLongitude, map.initialZoomLatitude);
-      }</script>
-
-        <div class="container">
-            <div class="row">
-            </div>
-        </div>
-        <select>
-            <option value="AFG">Afghanistan</option>
-            <option value="ALA">Åland Islands</option>
-            <option value="ALB">Albania</option>
-            <option value="DZA">Algeria</option>
-            <option value="ASM">American Samoa</option>
-            <option value="AND">Andorra</option>
-            <option value="AGO">Angola</option>
-            <option value="AIA">Anguilla</option>
-            <option value="ATA">Antarctica</option>
-            <option value="ATG">Antigua and Barbuda</option>
-            <option value="ARG">Argentina</option>
-            <option value="ARM">Armenia</option>
-            <option value="ABW">Aruba</option>
-            <option value="AUS">Australia</option>
-            <option value="AUT">Austria</option>
-            <option value="AZE">Azerbaijan</option>
-            <option value="BHS">Bahamas</option>
-            <option value="BHR">Bahrain</option>
-            <option value="BGD">Bangladesh</option>
-            <option value="BRB">Barbados</option>
-            <option value="BLR">Belarus</option>
-            <option value="BEL">Belgium</option>
-            <option value="BLZ">Belize</option>
-            <option value="BEN">Benin</option>
-            <option value="BMU">Bermuda</option>
-            <option value="BTN">Bhutan</option>
-            <option value="BOL">Bolivia, Plurinational State of</option>
-            <option value="BES">Bonaire, Sint Eustatius and Saba</option>
-            <option value="BIH">Bosnia and Herzegovina</option>
-            <option value="BWA">Botswana</option>
-            <option value="BVT">Bouvet Island</option>
-            <option value="BRA">Brazil</option>
-            <option value="IOT">British Indian Ocean Territory</option>
-            <option value="BRN">Brunei Darussalam</option>
-            <option value="BGR">Bulgaria</option>
-            <option value="BFA">Burkina Faso</option>
-            <option value="BDI">Burundi</option>
-            <option value="KHM">Cambodia</option>
-            <option value="CMR">Cameroon</option>
-            <option value="CAN">Canada</option>
-            <option value="CPV">Cape Verde</option>
-            <option value="CYM">Cayman Islands</option>
-            <option value="CAF">Central African Republic</option>
-            <option value="TCD">Chad</option>
-            <option value="CHL">Chile</option>
-            <option value="CHN">China</option>
-            <option value="CXR">Christmas Island</option>
-            <option value="CCK">Cocos (Keeling) Islands</option>
-            <option value="COL">Colombia</option>
-            <option value="COM">Comoros</option>
-            <option value="COG">Congo</option>
-            <option value="COD">Congo, the Democratic Republic of the</option>
-            <option value="COK">Cook Islands</option>
-            <option value="CRI">Costa Rica</option>
-            <option value="CIV">Côte d'Ivoire</option>
-            <option value="HRV">Croatia</option>
-            <option value="CUB">Cuba</option>
-            <option value="CUW">Curaçao</option>
-            <option value="CYP">Cyprus</option>
-            <option value="CZE">Czech Republic</option>
-            <option value="DNK">Denmark</option>
-            <option value="DJI">Djibouti</option>
-            <option value="DMA">Dominica</option>
-            <option value="DOM">Dominican Republic</option>
-            <option value="ECU">Ecuador</option>
-            <option value="EGY">Egypt</option>
-            <option value="SLV">El Salvador</option>
-            <option value="GNQ">Equatorial Guinea</option>
-            <option value="ERI">Eritrea</option>
-            <option value="EST">Estonia</option>
-            <option value="ETH">Ethiopia</option>
-            <option value="FLK">Falkland Islands (Malvinas)</option>
-            <option value="FRO">Faroe Islands</option>
-            <option value="FJI">Fiji</option>
-            <option value="FIN">Finland</option>
-            <option value="FRA">France</option>
-            <option value="GUF">French Guiana</option>
-            <option value="PYF">French Polynesia</option>
-            <option value="ATF">French Southern Territories</option>
-            <option value="GAB">Gabon</option>
-            <option value="GMB">Gambia</option>
-            <option value="GEO">Georgia</option>
-            <option value="DEU">Germany</option>
-            <option value="GHA">Ghana</option>
-            <option value="GIB">Gibraltar</option>
-            <option value="GRC">Greece</option>
-            <option value="GRL">Greenland</option>
-            <option value="GRD">Grenada</option>
-            <option value="GLP">Guadeloupe</option>
-            <option value="GUM">Guam</option>
-            <option value="GTM">Guatemala</option>
-            <option value="GGY">Guernsey</option>
-            <option value="GIN">Guinea</option>
-            <option value="GNB">Guinea-Bissau</option>
-            <option value="GUY">Guyana</option>
-            <option value="HTI">Haiti</option>
-            <option value="HMD">Heard Island and McDonald Islands</option>
-            <option value="VAT">Holy See (Vatican City State)</option>
-            <option value="HND">Honduras</option>
-            <option value="HKG">Hong Kong</option>
-            <option value="HUN">Hungary</option>
-            <option value="ISL">Iceland</option>
-            <option value="IND">India</option>
-            <option value="IDN">Indonesia</option>
-            <option value="IRN">Iran, Islamic Republic of</option>
-            <option value="IRQ">Iraq</option>
-            <option value="IRL">Ireland</option>
-            <option value="IMN">Isle of Man</option>
-            <option value="ISR">Israel</option>
-            <option value="ITA">Italy</option>
-            <option value="JAM">Jamaica</option>
-            <option value="JPN">Japan</option>
-            <option value="JEY">Jersey</option>
-            <option value="JOR">Jordan</option>
-            <option value="KAZ">Kazakhstan</option>
-            <option value="KEN">Kenya</option>
-            <option value="KIR">Kiribati</option>
-            <option value="PRK">Korea, Democratic People's Republic of</option>
-            <option value="KOR">Korea, Republic of</option>
-            <option value="KWT">Kuwait</option>
-            <option value="KGZ">Kyrgyzstan</option>
-            <option value="LAO">Lao People's Democratic Republic</option>
-            <option value="LVA">Latvia</option>
-            <option value="LBN">Lebanon</option>
-            <option value="LSO">Lesotho</option>
-            <option value="LBR">Liberia</option>
-            <option value="LBY">Libya</option>
-            <option value="LIE">Liechtenstein</option>
-            <option value="LTU">Lithuania</option>
-            <option value="LUX">Luxembourg</option>
-            <option value="MAC">Macao</option>
-            <option value="MKD">Macedonia, the former Yugoslav Republic of</option>
-            <option value="MDG">Madagascar</option>
-            <option value="MWI">Malawi</option>
-            <option value="MYS">Malaysia</option>
-            <option value="MDV">Maldives</option>
-            <option value="MLI">Mali</option>
-            <option value="MLT">Malta</option>
-            <option value="MHL">Marshall Islands</option>
-            <option value="MTQ">Martinique</option>
-            <option value="MRT">Mauritania</option>
-            <option value="MUS">Mauritius</option>
-            <option value="MYT">Mayotte</option>
-            <option value="MEX">Mexico</option>
-            <option value="FSM">Micronesia, Federated States of</option>
-            <option value="MDA">Moldova, Republic of</option>
-            <option value="MCO">Monaco</option>
-            <option value="MNG">Mongolia</option>
-            <option value="MNE">Montenegro</option>
-            <option value="MSR">Montserrat</option>
-            <option value="MAR">Morocco</option>
-            <option value="MOZ">Mozambique</option>
-            <option value="MMR">Myanmar</option>
-            <option value="NAM">Namibia</option>
-            <option value="NRU">Nauru</option>
-            <option value="NPL">Nepal</option>
-            <option value="NLD">Netherlands</option>
-            <option value="NCL">New Caledonia</option>
-            <option value="NZL">New Zealand</option>
-            <option value="NIC">Nicaragua</option>
-            <option value="NER">Niger</option>
-            <option value="NGA">Nigeria</option>
-            <option value="NIU">Niue</option>
-            <option value="NFK">Norfolk Island</option>
-            <option value="MNP">Northern Mariana Islands</option>
-            <option value="NOR">Norway</option>
-            <option value="OMN">Oman</option>
-            <option value="PAK">Pakistan</option>
-            <option value="PLW">Palau</option>
-            <option value="PSE">Palestinian Territory, Occupied</option>
-            <option value="PAN">Panama</option>
-            <option value="PNG">Papua New Guinea</option>
-            <option value="PRY">Paraguay</option>
-            <option value="PER">Peru</option>
-            <option value="PHL">Philippines</option>
-            <option value="PCN">Pitcairn</option>
-            <option value="POL">Poland</option>
-            <option value="PRT">Portugal</option>
-            <option value="PRI">Puerto Rico</option>
-            <option value="QAT">Qatar</option>
-            <option value="REU">Réunion</option>
-            <option value="ROU">Romania</option>
-            <option value="RUS">Russian Federation</option>
-            <option value="RWA">Rwanda</option>
-            <option value="BLM">Saint Barthélemy</option>
-            <option value="SHN">Saint Helena, Ascension and Tristan da Cunha</option>
-            <option value="KNA">Saint Kitts and Nevis</option>
-            <option value="LCA">Saint Lucia</option>
-            <option value="MAF">Saint Martin (French part)</option>
-            <option value="SPM">Saint Pierre and Miquelon</option>
-            <option value="VCT">Saint Vincent and the Grenadines</option>
-            <option value="WSM">Samoa</option>
-            <option value="SMR">San Marino</option>
-            <option value="STP">Sao Tome and Principe</option>
-            <option value="SAU">Saudi Arabia</option>
-            <option value="SEN">Senegal</option>
-            <option value="SRB">Serbia</option>
-            <option value="SYC">Seychelles</option>
-            <option value="SLE">Sierra Leone</option>
-            <option value="SGP">Singapore</option>
-            <option value="SXM">Sint Maarten (Dutch part)</option>
-            <option value="SVK">Slovakia</option>
-            <option value="SVN">Slovenia</option>
-            <option value="SLB">Solomon Islands</option>
-            <option value="SOM">Somalia</option>
-            <option value="ZAF">South Africa</option>
-            <option value="SGS">South Georgia and the South Sandwich Islands</option>
-            <option value="SSD">South Sudan</option>
-            <option value="ESP">Spain</option>
-            <option value="LKA">Sri Lanka</option>
-            <option value="SDN">Sudan</option>
-            <option value="SUR">Suriname</option>
-            <option value="SJM">Svalbard and Jan Mayen</option>
-            <option value="SWZ">Swaziland</option>
-            <option value="SWE">Sweden</option>
-            <option value="CHE">Switzerland</option>
-            <option value="SYR">Syrian Arab Republic</option>
-            <option value="TWN">Taiwan, Province of China</option>
-            <option value="TJK">Tajikistan</option>
-            <option value="TZA">Tanzania, United Republic of</option>
-            <option value="THA">Thailand</option>
-            <option value="TLS">Timor-Leste</option>
-            <option value="TGO">Togo</option>
-            <option value="TKL">Tokelau</option>
-            <option value="TON">Tonga</option>
-            <option value="TTO">Trinidad and Tobago</option>
-            <option value="TUN">Tunisia</option>
-            <option value="TUR">Turkey</option>
-            <option value="TKM">Turkmenistan</option>
-            <option value="TCA">Turks and Caicos Islands</option>
-            <option value="TUV">Tuvalu</option>
-            <option value="UGA">Uganda</option>
-            <option value="UKR">Ukraine</option>
-            <option value="ARE">United Arab Emirates</option>
-            <option value="GBR">United Kingdom</option>
-            <option value="USA">United States</option>
-            <option value="UMI">United States Minor Outlying Islands</option>
-            <option value="URY">Uruguay</option>
-            <option value="UZB">Uzbekistan</option>
-            <option value="VUT">Vanuatu</option>
-            <option value="VEN">Venezuela, Bolivarian Republic of</option>
-            <option value="VNM">Viet Nam</option>
-            <option value="VGB">Virgin Islands, British</option>
-            <option value="VIR">Virgin Islands, U.S.</option>
-            <option value="WLF">Wallis and Futuna</option>
-            <option value="ESH">Western Sahara</option>
-            <option value="YEM">Yemen</option>
-            <option value="ZMB">Zambia</option>
-            <option value="ZWE">Zimbabwe</option>
-        </select>
-    </body>
-
-    <form id="media">
-        <label for="media-input">Enter ISO3</label>
-        <input type="text" id="media-input">
-        <br>
-        <input id="ISIS3" type="submit" value="Media Search">
-    </form>
-    <script type="text/javascript">
-        var temperatureISO3 = {};
-        $("#ISIS3").on("click", function (event) {
-            event.preventDefault();
-            var ISO3 = $("#media-input").val();
-            // tas = temperature; pr = precipitation
-            //how is this invoking apiRouts.js? 
-            var queryURL = "/api/climate/" + ISO3;
-            $.ajax({
-                url: queryURL,
-                method: "GET",
-            }).then(function (response) {
-                $("#search-list").empty();
-
-                console.log("response[1]: " + response[1]);
-                // console.log("data[1]: " + response[1].year + " | " + response[1].data);
-                for (let i = 0; i < response.length; i++) {
-                    // console.log("Year: " + response[i].year);
-                    // console.log("Data: " + response[i].data);
-
-                    temperatureISO3 = {
-                        year: response[i].year,
-                        temperature: response[i].data,
-                    };
-
-                    console.log("temperatureISO3.year: " + temperatureISO3.year);
-                    console.log("temperatureISO3.temp: " + temperatureISO3.temperature);
-                    console.log("Hello, Globe!")
-
-                    // $("#search-list").append("Year: " + response[i].year + " | ");
-                    // $("#search-list").append("Data: " + response[i].data + "<br>");
-                }
-            })
-            var queryURL = "/api/pr/" + ISO3;
-            $.ajax({
-                url: queryURL,
-                method: "GET",
-            }).then(function (response) {
-                $("#search-list").empty();
-
-                console.log("response[1]: " + response[1]);
-                // console.log("data[1]: " + response[1].year + " | " + response[1].data);
-                for (let i = 0; i < response.length; i++) {
-                    // console.log("Year: " + response[i].year);
-                    // console.log("Data: " + response[i].data);
-
-                    preISO3 = {
-                        year: response[i].year,
-                        precipitation: response[i].data,
-                    };
-
-                    console.log("preISO3.year: " + preISO3.year);
-                    console.log("preISO3.pre: " + preISO3.precipitation);
-                    console.log("Hello, World!")
-
-                    // $("#search-list").append("Year: " + response[i].year + " | ");
-                    // $("#search-list").append("Data: " + response[i].data + "<br>");
-                }
-            })
-        });
+      }
     </script>
-    
 
-    </html>
+    <div class="container">
+      <div class="row"></div>
+    </div>
+
+  </body>
+
+  <form id="media">
+    <label for="media-input">Enter ISO3</label>
+    <input type="text" id="media-input">
+    <br>
+    <input id="ISIS3" type="submit" value="Media Search">
+  </form>
+  <script type="text/javascript">
+    var temperatureISO3 = {};
+    $("#ISIS3").on("click", function (event) {
+      event.preventDefault();
+      var ISO3 = $("#media-input").val();
+      // tas = temperature; pr = precipitation
+      //how is this invoking apiRouts.js?
+      var queryURL = "/api/climate/" + ISO3;
+      $
+        .ajax({url: queryURL, method: "GET"})
+        .then(function (response) {
+          $("#search-list").empty();
+
+          console.log("response[1]: " + response[1]);
+          // console.log("data[1]: " + response[1].year + " | " + response[1].data);
+          for (let i = 0; i < response.length; i++) {
+            // console.log("Year: " + response[i].year);
+            // console.log("Data: " + response[i].data);
+
+            temperatureISO3 = {
+              ISO3: ISO3,
+              year: response[i].year,
+              temperature: response[i].data
+            };
+
+            console.log("temperatureISO3.year: " + temperatureISO3.year);
+            console.log("temperatureISO3.temp: " + temperatureISO3.temperature);
+            console.log("Hello, Globe!")
+
+            $
+              .post("/api/new", temperatureISO3)
+              // On success, run the following code
+              .then(function (data) {
+                // Log the data we found
+                console.log(data);
+              });
+            // $("#search-list").append("Year: " + response[i].year + " | ");
+            // $("#search-list").append("Data: " + response[i].data + "<br>");
+          }
+        })
+      var queryURL = "/api/pr/" + ISO3;
+      $
+        .ajax({url: queryURL, method: "GET"})
+        .then(function (response) {
+          $("#search-list").empty();
+
+          console.log("response[1]: " + response[1]);
+          // console.log("data[1]: " + response[1].year + " | " + response[1].data);
+          for (let i = 0; i < response.length; i++) {
+            // console.log("Year: " + response[i].year);
+            // console.log("Data: " + response[i].data);
+
+            preISO3 = {
+              year: response[i].year,
+              precipitation: response[i].data
+            };
+
+            console.log("preISO3.year: " + preISO3.year);
+            console.log("preISO3.pre: " + preISO3.precipitation);
+            console.log("Hello, World!")
+
+            // $
+            //   .post("/api/new", preISO3)
+            //   // On success, run the following code
+            //   .then(function (data) {
+            //     // Log the data we found
+            //     console.log(data);
+            //   });
+
+            // Climate.create({
+            // 	ISO3: req.body.ISO3,
+            //   temperature: req.body.temperature,
+            // 	precipitation: req.body.precipitation,
+            // 	created_at: req.body.created_at
+            // });
+
+            // $("#search-list").append("Year: " + response[i].year + " | ");
+            // $("#search-list").append("Data: " + response[i].data + "<br>");
+          }
+        })
+    });
+  </script>
+
+</html>
