@@ -10,7 +10,6 @@ var sequelize = require('../config/connection.js');
 var Climate = sequelize.define("Climate", {
 	ISO3: Sequelize.STRING,
 	temperature: Sequelize.STRING,
-	precipitation: Sequelize.STRING,
 	year: Sequelize.INTEGER,
 	created_at: Sequelize.DATE
 }, {freezeTableName: true});

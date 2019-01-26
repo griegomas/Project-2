@@ -31,7 +31,7 @@ module.exports = function (app) {
   app.post("/api/new", function (req, res) {
     console.log("Climate data: ");
     console.log(req.body);
-    db.Climate.create({year: req.body.preISO3.year, precipitation: req.body.preISO3.precipitation}).then(function (results) {
+    db.Climate.create({ISO3: req.body.ISO3, year: req.body.year, temperature: req.body.temperature}).then(function (results) {
       res.json(results);
     });
   });

@@ -1191,6 +1191,7 @@
             // console.log("Data: " + response[i].data);
 
             temperatureISO3 = {
+              ISO3: ISO3,
               year: response[i].year,
               temperature: response[i].data
             };
@@ -1199,6 +1200,13 @@
             console.log("temperatureISO3.temp: " + temperatureISO3.temperature);
             console.log("Hello, Globe!")
 
+            $
+              .post("/api/new", temperatureISO3)
+              // On success, run the following code
+              .then(function (data) {
+                // Log the data we found
+                console.log(data);
+              });
             // $("#search-list").append("Year: " + response[i].year + " | ");
             // $("#search-list").append("Data: " + response[i].data + "<br>");
           }
@@ -1224,13 +1232,13 @@
             console.log("preISO3.pre: " + preISO3.precipitation);
             console.log("Hello, World!")
 
-            $
-              .post("/api/new", preISO3)
-              // On success, run the following code
-              .then(function (data) {
-                // Log the data we found
-                console.log(data);
-              });
+            // $
+            //   .post("/api/new", preISO3)
+            //   // On success, run the following code
+            //   .then(function (data) {
+            //     // Log the data we found
+            //     console.log(data);
+            //   });
 
             // Climate.create({
             // 	ISO3: req.body.ISO3,
