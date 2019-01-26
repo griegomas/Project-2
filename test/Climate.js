@@ -7,15 +7,13 @@ var Sequelize = require('sequelize');
 var sequelize = require('../config/connection.js');
 
 // Creates a "Chirp" model that matches up with DB
-var Climate = sequelize.define("climate", {
+var Climate = sequelize.define("Climate", {
 	ISO3: Sequelize.STRING,
 	temperature: Sequelize.STRING,
 	precipitation: Sequelize.STRING,
+	year: Sequelize.INTEGER,
 	created_at: Sequelize.DATE
-});
-
-// Syncs with DB
-Climate.sync();
+}, {freezeTableName: true});
 
 // Makes the Chirp Model available for other files (will also create a table)
 module.exports = Climate;
