@@ -1,5 +1,5 @@
 {
-  "name": "node-handlebars-boilerplate",
+  // "name": "node-handlebars-boilerplate",
   "version": "1.0.0",
   "description": "Project 2 Starter",
   "main": "server.js",
@@ -15,7 +15,7 @@
     "convert-country-codes": "^1.0.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
+    // "express-handlebars": "^3.0.0",
     "mysql2": "^1.5.3",
     "sequelize": "^4.42.0"
   },
