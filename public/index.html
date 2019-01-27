@@ -1076,6 +1076,7 @@
   </div>
   <script>
     var formrow = $("tbody");
+    var climatedata = [];
     var map = AmCharts.makeChart("chartdiv", {
       "type": "map",
       // "theme": "light",
@@ -1095,7 +1096,11 @@
       "listeners": [{
         "event": "clickMapObject",
         "method": function (e) {
-          $("#form-row tr").remove(); 
+          $("#form-row tr").remove();
+          $.ajax({
+            method: "DELETE",
+            url: "/api/delete/"
+          });
           // Ignore any click not on area
           if (e.mapObject.objectType !== "MapArea")
             return;
@@ -1141,11 +1146,20 @@
                     year: response[i].year,
                     temperature: response[i].data
                   };
-                  
-                  $("#form-row").append(
-      ' <tr><td>' + temperatureISO3.ISO3 +
-      ' </td><td>' + temperatureISO3.year +
-      ' </td><td>' + temperatureISO3.temperature + ' </td></tr>');
+
+                  $
+                    .post("/api/new", temperatureISO3)
+                    // On success, run the following code
+                    .then(function (data) {
+                      // Log the data we found
+                      console.log(data);
+                    });
+
+                  // $("#form-row").append(
+                  // ' <tr><td>' + temperatureISO3.ISO3 +
+                  // ' </td><td>' + temperatureISO3.year +
+                  // ' </td><td>' + temperatureISO3.temperature + ' </td></tr>');
+
 
                   // var newTr = $("<tr>");
                   // newTr.data("temp", temperatureISO3);
@@ -1171,15 +1185,21 @@
                   console.log("temperatureISO3.temp: " + temperatureISO3.year);
                   console.log("Hello, Globe!")
 
-                  $
-                    .post("/api/new", temperatureISO3)
-                    // On success, run the following code
-                    .then(function (data) {
-                      // Log the data we found
-                      console.log(data);
-                    });
+
 
                 }
+              }
+              $.get("/api/", function (data) {
+
+                climatedata = data;
+                console.log(climatedata)
+
+              });
+              for (let i = 0; i < climatedata.length; i++) {
+              $("#form-row").append(
+                ' <tr><td>' + climatedata.ISO3[i] +
+                ' </td><td>' + climatedata.year[i] +
+                ' </td><td>' + climatedata.temperature[i] + ' </td></tr>');
               }
             })
         }
@@ -1241,7 +1261,7 @@
         </tr>
       </thead>
       <tbody id="form-row">
-      
+
       </tbody>
     </table>
   </div>
