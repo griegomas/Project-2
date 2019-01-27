@@ -8,8 +8,8 @@ var axios = require("axios");
 module.exports = function (app) {
   //Not sure if we are going to need a 'get' or anything. Putting here, just in case.
   app.get("/api/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.json(dbExamples);
+    db.Climate.findAll({}).then(function (information) {
+      res.json(information);
     });
   });
 
@@ -44,13 +44,9 @@ module.exports = function (app) {
   });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function (dbExample) {
-      res.json(dbExample);
-    });
+  app.delete("/api/delete", function (req, res) {
+    db.Climate.destroy({
+      where: {}
+    })
   });
 };
