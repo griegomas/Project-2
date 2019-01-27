@@ -1,1040 +1,1040 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>CLIPH</title>
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="script" type="text/javascript" href="/Project-2/models/index.js">
+<head>
+  <meta charset="UTF-8">
+  <title>CLIPH</title>
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="script" type="text/javascript" href="/Project-2/models/index.js">
 
-    <script type="text/javascript">
-      var iso2Countries = {
-        TW: {
-          ioc: "TPE",
-          iso3: "TWN"
-        },
-        AF: {
-          ioc: "AFG",
-          iso3: "AFG"
-        },
-        AL: {
-          ioc: "ALB",
-          iso3: "ALB"
-        },
-        DZ: {
-          ioc: "ALG",
-          iso3: "DZA"
-        },
-        AS: {
-          ioc: "ASA",
-          iso3: "ASM"
-        },
-        AD: {
-          ioc: "AND",
-          iso3: "AND"
-        },
-        AO: {
-          ioc: "ANG",
-          iso3: "AGO"
-        },
-        AI: {
-          ioc: "AIA",
-          iso3: "AIA"
-        },
-        AQ: {
-          ioc: null,
-          iso3: "ATA"
-        },
-        AG: {
-          ioc: "ANT",
-          iso3: "ATG"
-        },
-        AR: {
-          ioc: "ARG",
-          iso3: "ARG"
-        },
-        AM: {
-          ioc: "ARM",
-          iso3: "ARM"
-        },
-        AW: {
-          ioc: "ARU",
-          iso3: "ABW"
-        },
-        AU: {
-          ioc: "AUS",
-          iso3: "AUS"
-        },
-        AT: {
-          ioc: "AUT",
-          iso3: "AUT"
-        },
-        AZ: {
-          ioc: "AZE",
-          iso3: "AZE"
-        },
-        BS: {
-          ioc: "BAH",
-          iso3: "BHS"
-        },
-        BH: {
-          ioc: "BRN",
-          iso3: "BHR"
-        },
-        BD: {
-          ioc: "BAN",
-          iso3: "BGD"
-        },
-        BB: {
-          ioc: "BAR",
-          iso3: "BRB"
-        },
-        BY: {
-          ioc: "BLR",
-          iso3: "BLR"
-        },
-        BE: {
-          ioc: "BEL",
-          iso3: "BEL"
-        },
-        BZ: {
-          ioc: "BIZ",
-          iso3: "BLZ"
-        },
-        BJ: {
-          ioc: "BEN",
-          iso3: "BEN"
-        },
-        BM: {
-          ioc: "BER",
-          iso3: "BMU"
-        },
-        BT: {
-          ioc: "BHU",
-          iso3: "BTN"
-        },
-        BO: {
-          ioc: "BOL",
-          iso3: "BOL"
-        },
-        BQ: {
-          ioc: "AHO",
-          iso3: "BES"
-        },
-        BA: {
-          ioc: "BIH",
-          iso3: "BIH"
-        },
-        BW: {
-          ioc: "BOT",
-          iso3: "BWA"
-        },
-        BV: {
-          ioc: null,
-          iso3: "BVT"
-        },
-        BR: {
-          ioc: "BRA",
-          iso3: "BRA"
-        },
-        IO: {
-          ioc: null,
-          iso3: "IOT"
-        },
-        VG: {
-          ioc: "IVB",
-          iso3: "VGB"
-        },
-        BN: {
-          ioc: "BRU",
-          iso3: "BRN"
-        },
-        BG: {
-          ioc: "BUL",
-          iso3: "BGR"
-        },
-        BF: {
-          ioc: "BUR",
-          iso3: "BFA"
-        },
-        BI: {
-          ioc: "BDI",
-          iso3: "BDI"
-        },
-        CV: {
-          ioc: "CPV",
-          iso3: "CPV"
-        },
-        KH: {
-          ioc: "CAM",
-          iso3: "KHM"
-        },
-        CM: {
-          ioc: "CMR",
-          iso3: "CMR"
-        },
-        CA: {
-          ioc: "CAN",
-          iso3: "CAN"
-        },
-        KY: {
-          ioc: "CAY",
-          iso3: "CYM"
-        },
-        CF: {
-          ioc: "CAF",
-          iso3: "CAF"
-        },
-        TD: {
-          ioc: "CHA",
-          iso3: "TCD"
-        },
-        CL: {
-          ioc: "CHI",
-          iso3: "CHL"
-        },
-        CN: {
-          ioc: "CHN",
-          iso3: "CHN"
-        },
-        HK: {
-          ioc: "HKG",
-          iso3: "HKG"
-        },
-        MO: {
-          ioc: "MAC",
-          iso3: "MAC"
-        },
-        CX: {
-          ioc: null,
-          iso3: "CXR"
-        },
-        CC: {
-          ioc: null,
-          iso3: "CCK"
-        },
-        CO: {
-          ioc: "COL",
-          iso3: "COL"
-        },
-        KM: {
-          ioc: "COM",
-          iso3: "COM"
-        },
-        CG: {
-          ioc: "CGO",
-          iso3: "COG"
-        },
-        CK: {
-          ioc: "COK",
-          iso3: "COK"
-        },
-        CR: {
-          ioc: "CRC",
-          iso3: "CRI"
-        },
-        HR: {
-          ioc: "CRO",
-          iso3: "HRV"
-        },
-        CU: {
-          ioc: "CUB",
-          iso3: "CUB"
-        },
-        CW: {
-          ioc: null,
-          iso3: "CUW"
-        },
-        CY: {
-          ioc: "CYP",
-          iso3: "CYP"
-        },
-        CZ: {
-          ioc: "CZE",
-          iso3: "CZE"
-        },
-        CI: {
-          ioc: "CIV",
-          iso3: "CIV"
-        },
-        KP: {
-          ioc: "PRK",
-          iso3: "PRK"
-        },
-        CD: {
-          ioc: "COD",
-          iso3: "COD"
-        },
-        DK: {
-          ioc: "DEN",
-          iso3: "DNK"
-        },
-        DJ: {
-          ioc: "DJI",
-          iso3: "DJI"
-        },
-        DM: {
-          ioc: "DMA",
-          iso3: "DMA"
-        },
-        DO: {
-          ioc: "DOM",
-          iso3: "DOM"
-        },
-        EC: {
-          ioc: "ECU",
-          iso3: "ECU"
-        },
-        EG: {
-          ioc: "EGY",
-          iso3: "EGY"
-        },
-        SV: {
-          ioc: "ESA",
-          iso3: "SLV"
-        },
-        GQ: {
-          ioc: "GEQ",
-          iso3: "GNQ"
-        },
-        ER: {
-          ioc: "ERI",
-          iso3: "ERI"
-        },
-        EE: {
-          ioc: "EST",
-          iso3: "EST"
-        },
-        ET: {
-          ioc: "ETH",
-          iso3: "ETH"
-        },
-        FK: {
-          ioc: "FLK",
-          iso3: "FLK"
-        },
-        FO: {
-          ioc: "FAR",
-          iso3: "FRO"
-        },
-        FJ: {
-          ioc: "FIJ",
-          iso3: "FJI"
-        },
-        FI: {
-          ioc: "FIN",
-          iso3: "FIN"
-        },
-        FR: {
-          ioc: "FRA",
-          iso3: "FRA"
-        },
-        GF: {
-          ioc: "FGU",
-          iso3: "GUF"
-        },
-        PF: {
-          ioc: "FPO",
-          iso3: "PYF"
-        },
-        TF: {
-          ioc: null,
-          iso3: "ATF"
-        },
-        GA: {
-          ioc: "GAB",
-          iso3: "GAB"
-        },
-        GM: {
-          ioc: "GAM",
-          iso3: "GMB"
-        },
-        GE: {
-          ioc: "GEO",
-          iso3: "GEO"
-        },
-        DE: {
-          ioc: "GER",
-          iso3: "DEU"
-        },
-        GH: {
-          ioc: "GHA",
-          iso3: "GHA"
-        },
-        GI: {
-          ioc: "GIB",
-          iso3: "GIB"
-        },
-        GR: {
-          ioc: "GRE",
-          iso3: "GRC"
-        },
-        GL: {
-          ioc: "GRL",
-          iso3: "GRL"
-        },
-        GD: {
-          ioc: "GRN",
-          iso3: "GRD"
-        },
-        GP: {
-          ioc: "GUD",
-          iso3: "GLP"
-        },
-        GU: {
-          ioc: "GUM",
-          iso3: "GUM"
-        },
-        GT: {
-          ioc: "GUA",
-          iso3: "GTM"
-        },
-        GG: {
-          ioc: null,
-          iso3: "GGY"
-        },
-        GN: {
-          ioc: "GUI",
-          iso3: "GIN"
-        },
-        GW: {
-          ioc: "GBS",
-          iso3: "GNB"
-        },
-        GY: {
-          ioc: "GUY",
-          iso3: "GUY"
-        },
-        HT: {
-          ioc: "HAI",
-          iso3: "HTI"
-        },
-        HM: {
-          ioc: null,
-          iso3: "HMD"
-        },
-        VA: {
-          ioc: null,
-          iso3: "VAT"
-        },
-        HN: {
-          ioc: "HON",
-          iso3: "HND"
-        },
-        HU: {
-          ioc: "HUN",
-          iso3: "HUN"
-        },
-        IS: {
-          ioc: "ISL",
-          iso3: "ISL"
-        },
-        IN: {
-          ioc: "IND",
-          iso3: "IND"
-        },
-        ID: {
-          ioc: "INA",
-          iso3: "IDN"
-        },
-        IR: {
-          ioc: "IRI",
-          iso3: "IRN"
-        },
-        IQ: {
-          ioc: "IRQ",
-          iso3: "IRQ"
-        },
-        IE: {
-          ioc: "IRL",
-          iso3: "IRL"
-        },
-        IM: {
-          ioc: null,
-          iso3: "IMN"
-        },
-        IL: {
-          ioc: "ISR",
-          iso3: "ISR"
-        },
-        IT: {
-          ioc: "ITA",
-          iso3: "ITA"
-        },
-        JM: {
-          ioc: "JAM",
-          iso3: "JAM"
-        },
-        JP: {
-          ioc: "JPN",
-          iso3: "JPN"
-        },
-        JE: {
-          ioc: null,
-          iso3: "JEY"
-        },
-        JO: {
-          ioc: "JOR",
-          iso3: "JOR"
-        },
-        KZ: {
-          ioc: "KAZ",
-          iso3: "KAZ"
-        },
-        KE: {
-          ioc: "KEN",
-          iso3: "KEN"
-        },
-        KI: {
-          ioc: "KIR",
-          iso3: "KIR"
-        },
-        KW: {
-          ioc: "KUW",
-          iso3: "KWT"
-        },
-        KG: {
-          ioc: "KGZ",
-          iso3: "KGZ"
-        },
-        LA: {
-          ioc: "LAO",
-          iso3: "LAO"
-        },
-        LV: {
-          ioc: "LAT",
-          iso3: "LVA"
-        },
-        LB: {
-          ioc: "LIB",
-          iso3: "LBN"
-        },
-        LS: {
-          ioc: "LES",
-          iso3: "LSO"
-        },
-        LR: {
-          ioc: "LBR",
-          iso3: "LBR"
-        },
-        LY: {
-          ioc: "LBA",
-          iso3: "LBY"
-        },
-        LI: {
-          ioc: "LIE",
-          iso3: "LIE"
-        },
-        LT: {
-          ioc: "LTU",
-          iso3: "LTU"
-        },
-        LU: {
-          ioc: "LUX",
-          iso3: "LUX"
-        },
-        MG: {
-          ioc: "MAD",
-          iso3: "MDG"
-        },
-        MW: {
-          ioc: "MAW",
-          iso3: "MWI"
-        },
-        MY: {
-          ioc: "MAS",
-          iso3: "MYS"
-        },
-        MV: {
-          ioc: "MDV",
-          iso3: "MDV"
-        },
-        ML: {
-          ioc: "MLI",
-          iso3: "MLI"
-        },
-        MT: {
-          ioc: "MLT",
-          iso3: "MLT"
-        },
-        MH: {
-          ioc: "MSH",
-          iso3: "MHL"
-        },
-        MQ: {
-          ioc: "MRT",
-          iso3: "MTQ"
-        },
-        MR: {
-          ioc: "MTN",
-          iso3: "MRT"
-        },
-        MU: {
-          ioc: "MRI",
-          iso3: "MUS"
-        },
-        YT: {
-          ioc: "MAY",
-          iso3: "MYT"
-        },
-        MX: {
-          ioc: "MEX",
-          iso3: "MEX"
-        },
-        FM: {
-          ioc: "FSM",
-          iso3: "FSM"
-        },
-        MC: {
-          ioc: "MON",
-          iso3: "MCO"
-        },
-        MN: {
-          ioc: "MGL",
-          iso3: "MNG"
-        },
-        ME: {
-          ioc: "MGO",
-          iso3: "MNE"
-        },
-        MS: {
-          ioc: "MNT",
-          iso3: "MSR"
-        },
-        MA: {
-          ioc: "MAR",
-          iso3: "MAR"
-        },
-        MZ: {
-          ioc: "MOZ",
-          iso3: "MOZ"
-        },
-        MM: {
-          ioc: "MYA",
-          iso3: "MMR"
-        },
-        NA: {
-          ioc: "NAM",
-          iso3: "NAM"
-        },
-        NR: {
-          ioc: "NRU",
-          iso3: "NRU"
-        },
-        NP: {
-          ioc: "NEP",
-          iso3: "NPL"
-        },
-        NL: {
-          ioc: "NED",
-          iso3: "NLD"
-        },
-        NC: {
-          ioc: "NCD",
-          iso3: "NCL"
-        },
-        NZ: {
-          ioc: "NZL",
-          iso3: "NZL"
-        },
-        NI: {
-          ioc: "NCA",
-          iso3: "NIC"
-        },
-        NE: {
-          ioc: "NIG",
-          iso3: "NER"
-        },
-        NG: {
-          ioc: "NGR",
-          iso3: "NGA"
-        },
-        NU: {
-          ioc: "NIU",
-          iso3: "NIU"
-        },
-        NF: {
-          ioc: "NFI",
-          iso3: "NFK"
-        },
-        MP: {
-          ioc: "NMA",
-          iso3: "MNP"
-        },
-        NO: {
-          ioc: "NOR",
-          iso3: "NOR"
-        },
-        OM: {
-          ioc: "OMA",
-          iso3: "OMN"
-        },
-        PK: {
-          ioc: "PAK",
-          iso3: "PAK"
-        },
-        PW: {
-          ioc: "PLW",
-          iso3: "PLW"
-        },
-        PA: {
-          ioc: "PAN",
-          iso3: "PAN"
-        },
-        PG: {
-          ioc: "PNG",
-          iso3: "PNG"
-        },
-        PY: {
-          ioc: "PAR",
-          iso3: "PRY"
-        },
-        PE: {
-          ioc: "PER",
-          iso3: "PER"
-        },
-        PH: {
-          ioc: "PHI",
-          iso3: "PHL"
-        },
-        PN: {
-          ioc: null,
-          iso3: "PCN"
-        },
-        PL: {
-          ioc: "POL",
-          iso3: "POL"
-        },
-        PT: {
-          ioc: "POR",
-          iso3: "PRT"
-        },
-        PR: {
-          ioc: "PUR",
-          iso3: "PRI"
-        },
-        QA: {
-          ioc: "QAT",
-          iso3: "QAT"
-        },
-        KR: {
-          ioc: "KOR",
-          iso3: "KOR"
-        },
-        MD: {
-          ioc: "MDA",
-          iso3: "MDA"
-        },
-        RO: {
-          ioc: "ROU",
-          iso3: "ROU"
-        },
-        RU: {
-          ioc: "RUS",
-          iso3: "RUS"
-        },
-        RW: {
-          ioc: "RWA",
-          iso3: "RWA"
-        },
-        RE: {
-          ioc: "REU",
-          iso3: "REU"
-        },
-        BL: {
-          ioc: null,
-          iso3: "BLM"
-        },
-        SH: {
-          ioc: "HEL",
-          iso3: "SHN"
-        },
-        KN: {
-          ioc: "SKN",
-          iso3: "KNA"
-        },
-        LC: {
-          ioc: "LCA",
-          iso3: "LCA"
-        },
-        MF: {
-          ioc: null,
-          iso3: "MAF"
-        },
-        PM: {
-          ioc: "SPM",
-          iso3: "SPM"
-        },
-        VC: {
-          ioc: "VIN",
-          iso3: "VCT"
-        },
-        WS: {
-          ioc: "SAM",
-          iso3: "WSM"
-        },
-        SM: {
-          ioc: "SMR",
-          iso3: "SMR"
-        },
-        ST: {
-          ioc: "STP",
-          iso3: "STP"
-        },
-        null: {
-          ioc: null,
-          iso3: null
-        },
-        SA: {
-          ioc: "KSA",
-          iso3: "SAU"
-        },
-        SN: {
-          ioc: "SEN",
-          iso3: "SEN"
-        },
-        RS: {
-          ioc: "SRB",
-          iso3: "SRB"
-        },
-        SC: {
-          ioc: "SEY",
-          iso3: "SYC"
-        },
-        SL: {
-          ioc: "SLE",
-          iso3: "SLE"
-        },
-        SG: {
-          ioc: "SIN",
-          iso3: "SGP"
-        },
-        SX: {
-          ioc: null,
-          iso3: "SXM"
-        },
-        SK: {
-          ioc: "SVK",
-          iso3: "SVK"
-        },
-        SI: {
-          ioc: "SLO",
-          iso3: "SVN"
-        },
-        SB: {
-          ioc: "SOL",
-          iso3: "SLB"
-        },
-        SO: {
-          ioc: "SOM",
-          iso3: "SOM"
-        },
-        ZA: {
-          ioc: "RSA",
-          iso3: "ZAF"
-        },
-        GS: {
-          ioc: null,
-          iso3: "SGS"
-        },
-        SS: {
-          ioc: null,
-          iso3: "SSD"
-        },
-        ES: {
-          ioc: "ESP",
-          iso3: "ESP"
-        },
-        LK: {
-          ioc: "SRI",
-          iso3: "LKA"
-        },
-        PS: {
-          ioc: "PLE",
-          iso3: "PSE"
-        },
-        SD: {
-          ioc: "SUD",
-          iso3: "SDN"
-        },
-        SR: {
-          ioc: "SUR",
-          iso3: "SUR"
-        },
-        SJ: {
-          ioc: null,
-          iso3: "SJM"
-        },
-        SZ: {
-          ioc: "SWZ",
-          iso3: "SWZ"
-        },
-        SE: {
-          ioc: "SWE",
-          iso3: "SWE"
-        },
-        CH: {
-          ioc: "SUI",
-          iso3: "CHE"
-        },
-        SY: {
-          ioc: "SYR",
-          iso3: "SYR"
-        },
-        TJ: {
-          ioc: "TJK",
-          iso3: "TJK"
-        },
-        TH: {
-          ioc: "THA",
-          iso3: "THA"
-        },
-        MK: {
-          ioc: "MKD",
-          iso3: "MKD"
-        },
-        TL: {
-          ioc: "TLS",
-          iso3: "TLS"
-        },
-        TG: {
-          ioc: "TOG",
-          iso3: "TGO"
-        },
-        TK: {
-          ioc: null,
-          iso3: "TKL"
-        },
-        TO: {
-          ioc: "TGA",
-          iso3: "TON"
-        },
-        TT: {
-          ioc: "TTO",
-          iso3: "TTO"
-        },
-        TN: {
-          ioc: "TUN",
-          iso3: "TUN"
-        },
-        TR: {
-          ioc: "TUR",
-          iso3: "TUR"
-        },
-        TM: {
-          ioc: "TKM",
-          iso3: "TKM"
-        },
-        TC: {
-          ioc: "TKS",
-          iso3: "TCA"
-        },
-        TV: {
-          ioc: "TUV",
-          iso3: "TUV"
-        },
-        UG: {
-          ioc: "UGA",
-          iso3: "UGA"
-        },
-        UA: {
-          ioc: "UKR",
-          iso3: "UKR"
-        },
-        AE: {
-          ioc: "UAE",
-          iso3: "ARE"
-        },
-        GB: {
-          ioc: "GBR",
-          iso3: "GBR"
-        },
-        TZ: {
-          ioc: "TAN",
-          iso3: "TZA"
-        },
-        UM: {
-          ioc: null,
-          iso3: "UMI"
-        },
-        VI: {
-          ioc: "ISV",
-          iso3: "VIR"
-        },
-        US: {
-          ioc: "USA",
-          iso3: "USA"
-        },
-        UY: {
-          ioc: "URU",
-          iso3: "URY"
-        },
-        UZ: {
-          ioc: "UZB",
-          iso3: "UZB"
-        },
-        VU: {
-          ioc: "VAN",
-          iso3: "VUT"
-        },
-        VE: {
-          ioc: "VEN",
-          iso3: "VEN"
-        },
-        VN: {
-          ioc: "VIE",
-          iso3: "VNM"
-        },
-        WF: {
-          ioc: "WAF",
-          iso3: "WLF"
-        },
-        EH: {
-          ioc: null,
-          iso3: "ESH"
-        },
-        YE: {
-          ioc: "YEM",
-          iso3: "YEM"
-        },
-        ZM: {
-          ioc: "ZAM",
-          iso3: "ZMB"
-        },
-        ZW: {
-          ioc: "ZIM",
-          iso3: "ZWE"
-        },
-        AX: {
-          ioc: null,
-          iso3: "ALA"
-        }
-      };
-    </script>
+  <script type="text/javascript">
+    var iso2Countries = {
+      TW: {
+        ioc: "TPE",
+        iso3: "TWN"
+      },
+      AF: {
+        ioc: "AFG",
+        iso3: "AFG"
+      },
+      AL: {
+        ioc: "ALB",
+        iso3: "ALB"
+      },
+      DZ: {
+        ioc: "ALG",
+        iso3: "DZA"
+      },
+      AS: {
+        ioc: "ASA",
+        iso3: "ASM"
+      },
+      AD: {
+        ioc: "AND",
+        iso3: "AND"
+      },
+      AO: {
+        ioc: "ANG",
+        iso3: "AGO"
+      },
+      AI: {
+        ioc: "AIA",
+        iso3: "AIA"
+      },
+      AQ: {
+        ioc: null,
+        iso3: "ATA"
+      },
+      AG: {
+        ioc: "ANT",
+        iso3: "ATG"
+      },
+      AR: {
+        ioc: "ARG",
+        iso3: "ARG"
+      },
+      AM: {
+        ioc: "ARM",
+        iso3: "ARM"
+      },
+      AW: {
+        ioc: "ARU",
+        iso3: "ABW"
+      },
+      AU: {
+        ioc: "AUS",
+        iso3: "AUS"
+      },
+      AT: {
+        ioc: "AUT",
+        iso3: "AUT"
+      },
+      AZ: {
+        ioc: "AZE",
+        iso3: "AZE"
+      },
+      BS: {
+        ioc: "BAH",
+        iso3: "BHS"
+      },
+      BH: {
+        ioc: "BRN",
+        iso3: "BHR"
+      },
+      BD: {
+        ioc: "BAN",
+        iso3: "BGD"
+      },
+      BB: {
+        ioc: "BAR",
+        iso3: "BRB"
+      },
+      BY: {
+        ioc: "BLR",
+        iso3: "BLR"
+      },
+      BE: {
+        ioc: "BEL",
+        iso3: "BEL"
+      },
+      BZ: {
+        ioc: "BIZ",
+        iso3: "BLZ"
+      },
+      BJ: {
+        ioc: "BEN",
+        iso3: "BEN"
+      },
+      BM: {
+        ioc: "BER",
+        iso3: "BMU"
+      },
+      BT: {
+        ioc: "BHU",
+        iso3: "BTN"
+      },
+      BO: {
+        ioc: "BOL",
+        iso3: "BOL"
+      },
+      BQ: {
+        ioc: "AHO",
+        iso3: "BES"
+      },
+      BA: {
+        ioc: "BIH",
+        iso3: "BIH"
+      },
+      BW: {
+        ioc: "BOT",
+        iso3: "BWA"
+      },
+      BV: {
+        ioc: null,
+        iso3: "BVT"
+      },
+      BR: {
+        ioc: "BRA",
+        iso3: "BRA"
+      },
+      IO: {
+        ioc: null,
+        iso3: "IOT"
+      },
+      VG: {
+        ioc: "IVB",
+        iso3: "VGB"
+      },
+      BN: {
+        ioc: "BRU",
+        iso3: "BRN"
+      },
+      BG: {
+        ioc: "BUL",
+        iso3: "BGR"
+      },
+      BF: {
+        ioc: "BUR",
+        iso3: "BFA"
+      },
+      BI: {
+        ioc: "BDI",
+        iso3: "BDI"
+      },
+      CV: {
+        ioc: "CPV",
+        iso3: "CPV"
+      },
+      KH: {
+        ioc: "CAM",
+        iso3: "KHM"
+      },
+      CM: {
+        ioc: "CMR",
+        iso3: "CMR"
+      },
+      CA: {
+        ioc: "CAN",
+        iso3: "CAN"
+      },
+      KY: {
+        ioc: "CAY",
+        iso3: "CYM"
+      },
+      CF: {
+        ioc: "CAF",
+        iso3: "CAF"
+      },
+      TD: {
+        ioc: "CHA",
+        iso3: "TCD"
+      },
+      CL: {
+        ioc: "CHI",
+        iso3: "CHL"
+      },
+      CN: {
+        ioc: "CHN",
+        iso3: "CHN"
+      },
+      HK: {
+        ioc: "HKG",
+        iso3: "HKG"
+      },
+      MO: {
+        ioc: "MAC",
+        iso3: "MAC"
+      },
+      CX: {
+        ioc: null,
+        iso3: "CXR"
+      },
+      CC: {
+        ioc: null,
+        iso3: "CCK"
+      },
+      CO: {
+        ioc: "COL",
+        iso3: "COL"
+      },
+      KM: {
+        ioc: "COM",
+        iso3: "COM"
+      },
+      CG: {
+        ioc: "CGO",
+        iso3: "COG"
+      },
+      CK: {
+        ioc: "COK",
+        iso3: "COK"
+      },
+      CR: {
+        ioc: "CRC",
+        iso3: "CRI"
+      },
+      HR: {
+        ioc: "CRO",
+        iso3: "HRV"
+      },
+      CU: {
+        ioc: "CUB",
+        iso3: "CUB"
+      },
+      CW: {
+        ioc: null,
+        iso3: "CUW"
+      },
+      CY: {
+        ioc: "CYP",
+        iso3: "CYP"
+      },
+      CZ: {
+        ioc: "CZE",
+        iso3: "CZE"
+      },
+      CI: {
+        ioc: "CIV",
+        iso3: "CIV"
+      },
+      KP: {
+        ioc: "PRK",
+        iso3: "PRK"
+      },
+      CD: {
+        ioc: "COD",
+        iso3: "COD"
+      },
+      DK: {
+        ioc: "DEN",
+        iso3: "DNK"
+      },
+      DJ: {
+        ioc: "DJI",
+        iso3: "DJI"
+      },
+      DM: {
+        ioc: "DMA",
+        iso3: "DMA"
+      },
+      DO: {
+        ioc: "DOM",
+        iso3: "DOM"
+      },
+      EC: {
+        ioc: "ECU",
+        iso3: "ECU"
+      },
+      EG: {
+        ioc: "EGY",
+        iso3: "EGY"
+      },
+      SV: {
+        ioc: "ESA",
+        iso3: "SLV"
+      },
+      GQ: {
+        ioc: "GEQ",
+        iso3: "GNQ"
+      },
+      ER: {
+        ioc: "ERI",
+        iso3: "ERI"
+      },
+      EE: {
+        ioc: "EST",
+        iso3: "EST"
+      },
+      ET: {
+        ioc: "ETH",
+        iso3: "ETH"
+      },
+      FK: {
+        ioc: "FLK",
+        iso3: "FLK"
+      },
+      FO: {
+        ioc: "FAR",
+        iso3: "FRO"
+      },
+      FJ: {
+        ioc: "FIJ",
+        iso3: "FJI"
+      },
+      FI: {
+        ioc: "FIN",
+        iso3: "FIN"
+      },
+      FR: {
+        ioc: "FRA",
+        iso3: "FRA"
+      },
+      GF: {
+        ioc: "FGU",
+        iso3: "GUF"
+      },
+      PF: {
+        ioc: "FPO",
+        iso3: "PYF"
+      },
+      TF: {
+        ioc: null,
+        iso3: "ATF"
+      },
+      GA: {
+        ioc: "GAB",
+        iso3: "GAB"
+      },
+      GM: {
+        ioc: "GAM",
+        iso3: "GMB"
+      },
+      GE: {
+        ioc: "GEO",
+        iso3: "GEO"
+      },
+      DE: {
+        ioc: "GER",
+        iso3: "DEU"
+      },
+      GH: {
+        ioc: "GHA",
+        iso3: "GHA"
+      },
+      GI: {
+        ioc: "GIB",
+        iso3: "GIB"
+      },
+      GR: {
+        ioc: "GRE",
+        iso3: "GRC"
+      },
+      GL: {
+        ioc: "GRL",
+        iso3: "GRL"
+      },
+      GD: {
+        ioc: "GRN",
+        iso3: "GRD"
+      },
+      GP: {
+        ioc: "GUD",
+        iso3: "GLP"
+      },
+      GU: {
+        ioc: "GUM",
+        iso3: "GUM"
+      },
+      GT: {
+        ioc: "GUA",
+        iso3: "GTM"
+      },
+      GG: {
+        ioc: null,
+        iso3: "GGY"
+      },
+      GN: {
+        ioc: "GUI",
+        iso3: "GIN"
+      },
+      GW: {
+        ioc: "GBS",
+        iso3: "GNB"
+      },
+      GY: {
+        ioc: "GUY",
+        iso3: "GUY"
+      },
+      HT: {
+        ioc: "HAI",
+        iso3: "HTI"
+      },
+      HM: {
+        ioc: null,
+        iso3: "HMD"
+      },
+      VA: {
+        ioc: null,
+        iso3: "VAT"
+      },
+      HN: {
+        ioc: "HON",
+        iso3: "HND"
+      },
+      HU: {
+        ioc: "HUN",
+        iso3: "HUN"
+      },
+      IS: {
+        ioc: "ISL",
+        iso3: "ISL"
+      },
+      IN: {
+        ioc: "IND",
+        iso3: "IND"
+      },
+      ID: {
+        ioc: "INA",
+        iso3: "IDN"
+      },
+      IR: {
+        ioc: "IRI",
+        iso3: "IRN"
+      },
+      IQ: {
+        ioc: "IRQ",
+        iso3: "IRQ"
+      },
+      IE: {
+        ioc: "IRL",
+        iso3: "IRL"
+      },
+      IM: {
+        ioc: null,
+        iso3: "IMN"
+      },
+      IL: {
+        ioc: "ISR",
+        iso3: "ISR"
+      },
+      IT: {
+        ioc: "ITA",
+        iso3: "ITA"
+      },
+      JM: {
+        ioc: "JAM",
+        iso3: "JAM"
+      },
+      JP: {
+        ioc: "JPN",
+        iso3: "JPN"
+      },
+      JE: {
+        ioc: null,
+        iso3: "JEY"
+      },
+      JO: {
+        ioc: "JOR",
+        iso3: "JOR"
+      },
+      KZ: {
+        ioc: "KAZ",
+        iso3: "KAZ"
+      },
+      KE: {
+        ioc: "KEN",
+        iso3: "KEN"
+      },
+      KI: {
+        ioc: "KIR",
+        iso3: "KIR"
+      },
+      KW: {
+        ioc: "KUW",
+        iso3: "KWT"
+      },
+      KG: {
+        ioc: "KGZ",
+        iso3: "KGZ"
+      },
+      LA: {
+        ioc: "LAO",
+        iso3: "LAO"
+      },
+      LV: {
+        ioc: "LAT",
+        iso3: "LVA"
+      },
+      LB: {
+        ioc: "LIB",
+        iso3: "LBN"
+      },
+      LS: {
+        ioc: "LES",
+        iso3: "LSO"
+      },
+      LR: {
+        ioc: "LBR",
+        iso3: "LBR"
+      },
+      LY: {
+        ioc: "LBA",
+        iso3: "LBY"
+      },
+      LI: {
+        ioc: "LIE",
+        iso3: "LIE"
+      },
+      LT: {
+        ioc: "LTU",
+        iso3: "LTU"
+      },
+      LU: {
+        ioc: "LUX",
+        iso3: "LUX"
+      },
+      MG: {
+        ioc: "MAD",
+        iso3: "MDG"
+      },
+      MW: {
+        ioc: "MAW",
+        iso3: "MWI"
+      },
+      MY: {
+        ioc: "MAS",
+        iso3: "MYS"
+      },
+      MV: {
+        ioc: "MDV",
+        iso3: "MDV"
+      },
+      ML: {
+        ioc: "MLI",
+        iso3: "MLI"
+      },
+      MT: {
+        ioc: "MLT",
+        iso3: "MLT"
+      },
+      MH: {
+        ioc: "MSH",
+        iso3: "MHL"
+      },
+      MQ: {
+        ioc: "MRT",
+        iso3: "MTQ"
+      },
+      MR: {
+        ioc: "MTN",
+        iso3: "MRT"
+      },
+      MU: {
+        ioc: "MRI",
+        iso3: "MUS"
+      },
+      YT: {
+        ioc: "MAY",
+        iso3: "MYT"
+      },
+      MX: {
+        ioc: "MEX",
+        iso3: "MEX"
+      },
+      FM: {
+        ioc: "FSM",
+        iso3: "FSM"
+      },
+      MC: {
+        ioc: "MON",
+        iso3: "MCO"
+      },
+      MN: {
+        ioc: "MGL",
+        iso3: "MNG"
+      },
+      ME: {
+        ioc: "MGO",
+        iso3: "MNE"
+      },
+      MS: {
+        ioc: "MNT",
+        iso3: "MSR"
+      },
+      MA: {
+        ioc: "MAR",
+        iso3: "MAR"
+      },
+      MZ: {
+        ioc: "MOZ",
+        iso3: "MOZ"
+      },
+      MM: {
+        ioc: "MYA",
+        iso3: "MMR"
+      },
+      NA: {
+        ioc: "NAM",
+        iso3: "NAM"
+      },
+      NR: {
+        ioc: "NRU",
+        iso3: "NRU"
+      },
+      NP: {
+        ioc: "NEP",
+        iso3: "NPL"
+      },
+      NL: {
+        ioc: "NED",
+        iso3: "NLD"
+      },
+      NC: {
+        ioc: "NCD",
+        iso3: "NCL"
+      },
+      NZ: {
+        ioc: "NZL",
+        iso3: "NZL"
+      },
+      NI: {
+        ioc: "NCA",
+        iso3: "NIC"
+      },
+      NE: {
+        ioc: "NIG",
+        iso3: "NER"
+      },
+      NG: {
+        ioc: "NGR",
+        iso3: "NGA"
+      },
+      NU: {
+        ioc: "NIU",
+        iso3: "NIU"
+      },
+      NF: {
+        ioc: "NFI",
+        iso3: "NFK"
+      },
+      MP: {
+        ioc: "NMA",
+        iso3: "MNP"
+      },
+      NO: {
+        ioc: "NOR",
+        iso3: "NOR"
+      },
+      OM: {
+        ioc: "OMA",
+        iso3: "OMN"
+      },
+      PK: {
+        ioc: "PAK",
+        iso3: "PAK"
+      },
+      PW: {
+        ioc: "PLW",
+        iso3: "PLW"
+      },
+      PA: {
+        ioc: "PAN",
+        iso3: "PAN"
+      },
+      PG: {
+        ioc: "PNG",
+        iso3: "PNG"
+      },
+      PY: {
+        ioc: "PAR",
+        iso3: "PRY"
+      },
+      PE: {
+        ioc: "PER",
+        iso3: "PER"
+      },
+      PH: {
+        ioc: "PHI",
+        iso3: "PHL"
+      },
+      PN: {
+        ioc: null,
+        iso3: "PCN"
+      },
+      PL: {
+        ioc: "POL",
+        iso3: "POL"
+      },
+      PT: {
+        ioc: "POR",
+        iso3: "PRT"
+      },
+      PR: {
+        ioc: "PUR",
+        iso3: "PRI"
+      },
+      QA: {
+        ioc: "QAT",
+        iso3: "QAT"
+      },
+      KR: {
+        ioc: "KOR",
+        iso3: "KOR"
+      },
+      MD: {
+        ioc: "MDA",
+        iso3: "MDA"
+      },
+      RO: {
+        ioc: "ROU",
+        iso3: "ROU"
+      },
+      RU: {
+        ioc: "RUS",
+        iso3: "RUS"
+      },
+      RW: {
+        ioc: "RWA",
+        iso3: "RWA"
+      },
+      RE: {
+        ioc: "REU",
+        iso3: "REU"
+      },
+      BL: {
+        ioc: null,
+        iso3: "BLM"
+      },
+      SH: {
+        ioc: "HEL",
+        iso3: "SHN"
+      },
+      KN: {
+        ioc: "SKN",
+        iso3: "KNA"
+      },
+      LC: {
+        ioc: "LCA",
+        iso3: "LCA"
+      },
+      MF: {
+        ioc: null,
+        iso3: "MAF"
+      },
+      PM: {
+        ioc: "SPM",
+        iso3: "SPM"
+      },
+      VC: {
+        ioc: "VIN",
+        iso3: "VCT"
+      },
+      WS: {
+        ioc: "SAM",
+        iso3: "WSM"
+      },
+      SM: {
+        ioc: "SMR",
+        iso3: "SMR"
+      },
+      ST: {
+        ioc: "STP",
+        iso3: "STP"
+      },
+      null: {
+        ioc: null,
+        iso3: null
+      },
+      SA: {
+        ioc: "KSA",
+        iso3: "SAU"
+      },
+      SN: {
+        ioc: "SEN",
+        iso3: "SEN"
+      },
+      RS: {
+        ioc: "SRB",
+        iso3: "SRB"
+      },
+      SC: {
+        ioc: "SEY",
+        iso3: "SYC"
+      },
+      SL: {
+        ioc: "SLE",
+        iso3: "SLE"
+      },
+      SG: {
+        ioc: "SIN",
+        iso3: "SGP"
+      },
+      SX: {
+        ioc: null,
+        iso3: "SXM"
+      },
+      SK: {
+        ioc: "SVK",
+        iso3: "SVK"
+      },
+      SI: {
+        ioc: "SLO",
+        iso3: "SVN"
+      },
+      SB: {
+        ioc: "SOL",
+        iso3: "SLB"
+      },
+      SO: {
+        ioc: "SOM",
+        iso3: "SOM"
+      },
+      ZA: {
+        ioc: "RSA",
+        iso3: "ZAF"
+      },
+      GS: {
+        ioc: null,
+        iso3: "SGS"
+      },
+      SS: {
+        ioc: null,
+        iso3: "SSD"
+      },
+      ES: {
+        ioc: "ESP",
+        iso3: "ESP"
+      },
+      LK: {
+        ioc: "SRI",
+        iso3: "LKA"
+      },
+      PS: {
+        ioc: "PLE",
+        iso3: "PSE"
+      },
+      SD: {
+        ioc: "SUD",
+        iso3: "SDN"
+      },
+      SR: {
+        ioc: "SUR",
+        iso3: "SUR"
+      },
+      SJ: {
+        ioc: null,
+        iso3: "SJM"
+      },
+      SZ: {
+        ioc: "SWZ",
+        iso3: "SWZ"
+      },
+      SE: {
+        ioc: "SWE",
+        iso3: "SWE"
+      },
+      CH: {
+        ioc: "SUI",
+        iso3: "CHE"
+      },
+      SY: {
+        ioc: "SYR",
+        iso3: "SYR"
+      },
+      TJ: {
+        ioc: "TJK",
+        iso3: "TJK"
+      },
+      TH: {
+        ioc: "THA",
+        iso3: "THA"
+      },
+      MK: {
+        ioc: "MKD",
+        iso3: "MKD"
+      },
+      TL: {
+        ioc: "TLS",
+        iso3: "TLS"
+      },
+      TG: {
+        ioc: "TOG",
+        iso3: "TGO"
+      },
+      TK: {
+        ioc: null,
+        iso3: "TKL"
+      },
+      TO: {
+        ioc: "TGA",
+        iso3: "TON"
+      },
+      TT: {
+        ioc: "TTO",
+        iso3: "TTO"
+      },
+      TN: {
+        ioc: "TUN",
+        iso3: "TUN"
+      },
+      TR: {
+        ioc: "TUR",
+        iso3: "TUR"
+      },
+      TM: {
+        ioc: "TKM",
+        iso3: "TKM"
+      },
+      TC: {
+        ioc: "TKS",
+        iso3: "TCA"
+      },
+      TV: {
+        ioc: "TUV",
+        iso3: "TUV"
+      },
+      UG: {
+        ioc: "UGA",
+        iso3: "UGA"
+      },
+      UA: {
+        ioc: "UKR",
+        iso3: "UKR"
+      },
+      AE: {
+        ioc: "UAE",
+        iso3: "ARE"
+      },
+      GB: {
+        ioc: "GBR",
+        iso3: "GBR"
+      },
+      TZ: {
+        ioc: "TAN",
+        iso3: "TZA"
+      },
+      UM: {
+        ioc: null,
+        iso3: "UMI"
+      },
+      VI: {
+        ioc: "ISV",
+        iso3: "VIR"
+      },
+      US: {
+        ioc: "USA",
+        iso3: "USA"
+      },
+      UY: {
+        ioc: "URU",
+        iso3: "URY"
+      },
+      UZ: {
+        ioc: "UZB",
+        iso3: "UZB"
+      },
+      VU: {
+        ioc: "VAN",
+        iso3: "VUT"
+      },
+      VE: {
+        ioc: "VEN",
+        iso3: "VEN"
+      },
+      VN: {
+        ioc: "VIE",
+        iso3: "VNM"
+      },
+      WF: {
+        ioc: "WAF",
+        iso3: "WLF"
+      },
+      EH: {
+        ioc: null,
+        iso3: "ESH"
+      },
+      YE: {
+        ioc: "YEM",
+        iso3: "YEM"
+      },
+      ZM: {
+        ioc: "ZAM",
+        iso3: "ZMB"
+      },
+      ZW: {
+        ioc: "ZIM",
+        iso3: "ZWE"
+      },
+      AX: {
+        ioc: null,
+        iso3: "ALA"
+      }
+    };
+  </script>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-  </head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<div id="tooltip-container"></div>
+
+<div id="canvas-svg"></div>
+
+<body>
 
   <div id="tooltip-container"></div>
 
   <div id="canvas-svg"></div>
 
-  <body>
-
-    <div id="tooltip-container"></div>
-
-    <div id="canvas-svg"></div>
-
-    <div class="jumbotron text-center">
-      <h1>WELCOME TO CLIPH</h1>
-      <p>Is the Globe Heating Up?</p>
-    </div>
-    <style>
-      .jumbotron {
+  <div class="jumbotron text-center">
+    <h1>WELCOME TO CLIPH</h1>
+    <p>Is the Globe Heating Up?</p>
+  </div>
+  <style>
+    .jumbotron {
         background-image: url("./styles/flames-.jpg");
         background-size: cover;
       }
@@ -1063,229 +1063,280 @@
         padding: 5px;
       }
     </style>
-    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-    <div id="chartdiv"></div>
-    <div id="info">Seletced countries:
-      <span id="selected">-</span></div>
-    <div id="controls">
-      <input type="button" value="Home" onclick="centerMap();"/>
-      <input type="button" value="Zoom In" onclick="zoomIn();"/>
-      <input type="button" value="Zoom Out" onclick="zoomOut();"/>
-    </div>
-    <script>
-      var map = AmCharts.makeChart("chartdiv", {
-        "type": "map",
-        "theme": "light",
-        "projection": "eckert3",
-        "dataProvider": {
-          "map": "worldLow",
-          "getAreasFromMap": true
-        },
-        "areasSettings": {
-          "selectedColor": "#CC0000",
-          "selectable": true
-        },
-        /**
-             * Add click event to track country selection/unselection
-             */
-        "listeners": [
-          {
-            "event": "clickMapObject",
-            "method": function (e) {
-
-              // Ignore any click not on area
-              if (e.mapObject.objectType !== "MapArea") 
-                return;
-              
-              var area = e.mapObject;
-
-              // Toggle showAsSelected
-              area.showAsSelected = !area.showAsSelected;
-              e
-                .chart
-                .returnInitialColor(area);
-
-              // Update the list
-              document
-                .getElementById("selected")
-                .innerHTML = JSON.stringify(getSelectedCountries());
-
-              // Convert ISO2 > ISO3 ??
-              console.log("working function: " + convertSelected(getSelectedCountries()));
-              console.log("working function: " + convertSelected(getSelectedCountries()));
-              var convertedISO3 = [];
-              var convertedISO3 = convertSelected(getSelectedCountries());
-              // tas = temperature; pr = precipitation
-              //how is this invoking apiRouts.js?
-              var queryURL = "/api/climate/" + convertedISO3[0];
-
-              $
-                .ajax({url: queryURL, method: "GET"})
-                .then(function (response) {
-
-                  console.log("response[1]: " + response[1]);
-                  // console.log("data[1]: " + response[1].year + " | " + response[1].data);
-                  for (let i = 0; i < response.length; i++) {
-                    // console.log("Year: " + response[i].year);
-                    // console.log("Data: " + response[i].data);
-
-                    temperatureISO3 = {
-                      ISO3: convertedISO3[0],
-                      year: response[i].year,
-                      temperature: response[i].data
-                    };
-
-                    console.log("temperatureISO3.ISO3: " + temperatureISO3.ISO3);
-                    console.log("temperatureISO3.year: " + temperatureISO3.year);
-                    console.log("temperatureISO3.temp: " + temperatureISO3.temperature);
-                    console.log("Hello, Globe!")
-
-                    $
-                      .post("/api/new", temperatureISO3)
-                      // On success, run the following code
-                      .then(function (data) {
-                        // Log the data we found
-                        console.log(data);
-                      });
-
-                  }
-                })
-            }
-          }
-        ]
-      })
+  <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+  <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+  <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+  <div id="chartdiv"></div>
+  <div id="info">
+    <span id="selected">-</span></div>
+  <div id="controls">
+    <input type="button" value="Home" onclick="centerMap();" />
+    <input type="button" value="Zoom In" onclick="zoomIn();" />
+    <input type="button" value="Zoom Out" onclick="zoomOut();" />
+  </div>
+  <script>
+    var formrow = $("tbody");
+    var map = AmCharts.makeChart("chartdiv", {
+      "type": "map",
+      // "theme": "light",
+      "projection": "eckert3",
+      "dataProvider": {
+        "map": "worldLow",
+        "getAreasFromMap": true
+      },
+      "areasSettings": {
+        "selectedColor": "#CC0000",
+        "autoZoom": false,
+        "selectable": true
+      },
       /**
-         * Function which extracts currently selected country list.
-         * Returns array consisting of country ISO2 codes
-         */
-      function getSelectedCountries() {
-        var selected = [];
-        for (var i = 0; i < map.dataProvider.areas.length; i++) {
-          if (map.dataProvider.areas[i].showAsSelected) 
-            selected.push(map.dataProvider.areas[i].id);
-          }
-        console.log("GET selected: " + selected);
-        return selected;
-      }
+       * Add click event to track country selection/unselection
+       */
+      "listeners": [{
+        "event": "clickMapObject",
+        "method": function (e) {
+          $("#form-row tr").remove(); 
+          // Ignore any click not on area
+          if (e.mapObject.objectType !== "MapArea")
+            return;
 
-      function convertSelected(e) {
-        var selectedISO3 = [];
-        for (var i = 0; i < e.length; i++) {
+          var area = e.mapObject;
 
-          selectedISO3.push(iso2Countries[e[i]].iso3);
+          // Toggle showAsSelected
+          area.showAsSelected = !area.showAsSelected;
+          e
+            .chart
+            .returnInitialColor(area);
+
+          // Update the list
+          document
+            .getElementById("selected")
+            .innerHTML = JSON.stringify(getSelectedCountries());
+
+          // Convert ISO2 > ISO3 ??
+          console.log("working function: " + convertSelected(getSelectedCountries()));
+          console.log("working function: " + convertSelected(getSelectedCountries()));
+          var convertedISO3 = [];
+          var convertedISO3 = convertSelected(getSelectedCountries());
+          // tas = temperature; pr = precipitation
+          //how is this invoking apiRouts.js?
+          var queryURL = "/api/climate/" + convertedISO3[0];
+
+          $
+            .ajax({
+              url: queryURL,
+              method: "GET"
+            })
+            .then(function (response) {
+
+              console.log("response[1]: " + response[1]);
+              // console.log("data[1]: " + response[1].year + " | " + response[1].data);
+              for (let g = 0; g < convertedISO3.length; g++) {
+                for (let i = 0; i < response.length; i++) {
+                  // console.log("Year: " + response[i].year);
+                  // console.log("Data: " + response[i].data);
+
+                  temperatureISO3 = {
+                    ISO3: convertedISO3[g],
+                    year: response[i].year,
+                    temperature: response[i].data
+                  };
+                  
+                  $("#form-row").append(
+      ' <tr><td>' + temperatureISO3.ISO3 +
+      ' </td><td>' + temperatureISO3.year +
+      ' </td><td>' + temperatureISO3.temperature + ' </td></tr>');
+
+                  // var newTr = $("<tr>");
+                  // newTr.data("temp", temperatureISO3);
+                  // newTr.append("<td>" + temperatureISO3.ISO3 + "</td>");
+                  // newTr.append("<td>" + temperatureISO3.year + "</td>");
+                  // newTr.append("<td>" + temperatureISO3.temperature + "</td>");
+                  // console.log(newTr.data)
+
+
+
+
+
+
+                  // // A function for rendering the list of authors to the page
+
+                  // formrow.prepend(newTr);
+
+
+                  // Function for handling what to render when there are no authors
+
+                  console.log("temperatureISO3.ISO3: " + temperatureISO3.ISO3);
+                  console.log("temperatureISO3.year: " + temperatureISO3.year);
+                  console.log("temperatureISO3.temp: " + temperatureISO3.year);
+                  console.log("Hello, Globe!")
+
+                  $
+                    .post("/api/new", temperatureISO3)
+                    // On success, run the following code
+                    .then(function (data) {
+                      // Log the data we found
+                      console.log(data);
+                    });
+
+                }
+              }
+            })
         }
+      }]
+    })
+    /**
+     * Function which extracts currently selected country list.
+     * Returns array consisting of country ISO2 codes
+     */
+    function getSelectedCountries() {
+      var selected = [];
+      for (var i = 0; i < map.dataProvider.areas.length; i++) {
+        if (map.dataProvider.areas[i].showAsSelected)
+          selected.push(map.dataProvider.areas[i].id);
+      }
+      console.log("GET selected: " + selected);
+      return selected;
+    }
 
-        console.log("selectedISO3: " + selectedISO3);
-        return selectedISO3;
+    function convertSelected(e) {
+      var selectedISO3 = [];
+      for (var i = 0; i < e.length; i++) {
+
+        selectedISO3.push(iso2Countries[e[i]].iso3);
       }
 
-      function zoomIn() {
-        map.zoomIn();
-      }
+      console.log("selectedISO3: " + selectedISO3);
+      return selectedISO3;
+    }
 
-      function zoomOut() {
-        map.zoomOut();
-      }
+    function zoomIn() {
+      map.zoomIn();
+    }
 
-      function centerMap() {
-        map.zoomToLongLat(map.initialZoomLevel, map.initialZoomLongitude, map.initialZoomLatitude);
-      }
-    </script>
+    function zoomOut() {
+      map.zoomOut();
+    }
 
-    <div class="container">
-      <div class="row"></div>
-    </div>
+    function centerMap() {
+      map.zoomToLongLat(map.initialZoomLevel, map.initialZoomLongitude, map.initialZoomLatitude);
+    }
+  </script>
 
-  </body>
+  <div class="container">
+    <div class="row"></div>
+  </div>
 
-  <form id="media">
-    <label for="media-input">Enter ISO3</label>
+</body>
+
+<form id="media">
+  <div>
+    <h1>Data</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ISO3</th>
+          <th>Year</th>
+          <th>Temperature</th>
+        </tr>
+      </thead>
+      <tbody id="form-row">
+      
+      </tbody>
+    </table>
+  </div>
+  <!-- <label for="media-input">Enter ISO3</label>
     <input type="text" id="media-input">
     <br>
-    <input id="ISIS3" type="submit" value="Media Search">
-  </form>
-  <script type="text/javascript">
-    var temperatureISO3 = {};
-    $("#ISIS3").on("click", function (event) {
-      event.preventDefault();
-      var ISO3 = $("#media-input").val();
-      // tas = temperature; pr = precipitation
-      //how is this invoking apiRouts.js?
-      var queryURL = "/api/climate/" + ISO3;
-      $
-        .ajax({url: queryURL, method: "GET"})
-        .then(function (response) {
-          $("#search-list").empty();
+    <input id="ISIS3" type="submit" value="Media Search"> -->
+</form>
+<script type="text/javascript">
+  var temperatureISO3 = {};
+  $("#ISIS3").on("click", function (event) {
+    event.preventDefault();
+    var ISO3 = $("#media-input").val();
+    // tas = temperature; pr = precipitation
+    //how is this invoking apiRouts.js?
+    var queryURL = "/api/climate/" + ISO3;
+    $
+      .ajax({
+        url: queryURL,
+        method: "GET"
+      })
+      .then(function (response) {
+        $("#search-list").empty();
 
-          console.log("response[1]: " + response[1]);
-          // console.log("data[1]: " + response[1].year + " | " + response[1].data);
-          for (let i = 0; i < response.length; i++) {
-            // console.log("Year: " + response[i].year);
-            // console.log("Data: " + response[i].data);
+        console.log("response[1]: " + response[1]);
+        // console.log("data[1]: " + response[1].year + " | " + response[1].data);
+        for (let i = 0; i < response.length; i++) {
+          // console.log("Year: " + response[i].year);
+          // console.log("Data: " + response[i].data);
 
-            temperatureISO3 = {
-              ISO3: ISO3,
-              year: response[i].year,
-              temperature: response[i].data
-            };
+          temperatureISO3 = {
+            ISO3: ISO3,
+            year: response[i].year,
+            temperature: response[i].data
+          };
 
-            console.log("temperatureISO3.year: " + temperatureISO3.year);
-            console.log("temperatureISO3.temp: " + temperatureISO3.temperature);
-            console.log("Hello, Globe!")
+          console.log("temperatureISO3.year: " + temperatureISO3.year);
+          console.log("temperatureISO3.temp: " + temperatureISO3.temperature);
+          console.log("Hello, Globe!")
 
-            $
-              .post("/api/new", temperatureISO3)
-              // On success, run the following code
-              .then(function (data) {
-                // Log the data we found
-                console.log(data);
-              });
-            // $("#search-list").append("Year: " + response[i].year + " | ");
-            // $("#search-list").append("Data: " + response[i].data + "<br>");
-          }
-        })
-      var queryURL = "/api/pr/" + ISO3;
-      $
-        .ajax({url: queryURL, method: "GET"})
-        .then(function (response) {
-          $("#search-list").empty();
+          $
+            .post("/api/new", temperatureISO3)
+            // On success, run the following code
+            .then(function (data) {
+              // Log the data we found
+              console.log(data);
+            });
+          // $("#search-list").append("Year: " + response[i].year + " | ");
+          // $("#search-list").append("Data: " + response[i].data + "<br>");
+        }
+      })
+    var queryURL = "/api/pr/" + ISO3;
+    $
+      .ajax({
+        url: queryURL,
+        method: "GET"
+      })
+      .then(function (response) {
+        $("#search-list").empty();
 
-          console.log("response[1]: " + response[1]);
-          // console.log("data[1]: " + response[1].year + " | " + response[1].data);
-          for (let i = 0; i < response.length; i++) {
-            // console.log("Year: " + response[i].year);
-            // console.log("Data: " + response[i].data);
+        console.log("response[1]: " + response[1]);
+        // console.log("data[1]: " + response[1].year + " | " + response[1].data);
+        for (let i = 0; i < response.length; i++) {
+          // console.log("Year: " + response[i].year);
+          // console.log("Data: " + response[i].data);
 
-            preISO3 = {
-              year: response[i].year,
-              precipitation: response[i].data
-            };
+          preISO3 = {
+            year: response[i].year,
+            precipitation: response[i].data
+          };
 
-            console.log("preISO3.year: " + preISO3.year);
-            console.log("preISO3.pre: " + preISO3.precipitation);
-            console.log("Hello, World!")
+          console.log("preISO3.year: " + preISO3.year);
+          console.log("preISO3.pre: " + preISO3.precipitation);
+          console.log("Hello, World!")
 
-            // $
-            //   .post("/api/new", preISO3)
-            //    On success, run the following code
-            //   .then(function (data) {
-            //      Log the data we found
-            //     console.log(data);
-            //   });
+          // $
+          //   .post("/api/new", preISO3)
+          //    On success, run the following code
+          //   .then(function (data) {
+          //      Log the data we found
+          //     console.log(data);
+          //   });
 
-            // Climate.create({
-            // 	ISO3: req.body.ISO3,
-            //   temperature: req.body.temperature,
-            // 	precipitation: req.body.precipitation,
-            // 	created_at: req.body.created_at
-            // });
+          // Climate.create({
+          // 	ISO3: req.body.ISO3,
+          //   temperature: req.body.temperature,
+          // 	precipitation: req.body.precipitation,
+          // 	created_at: req.body.created_at
+          // });
 
-            // $("#search-list").append("Year: " + response[i].year + " | ");
-            // $("#search-list").append("Data: " + response[i].data + "<br>");
-          }
-        })
-    });
-  </script>
+          // $("#search-list").append("Year: " + response[i].year + " | ");
+          // $("#search-list").append("Data: " + response[i].data + "<br>");
+        }
+      })
+  });
+</script>
 
 </html>
