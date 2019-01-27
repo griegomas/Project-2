@@ -1193,14 +1193,14 @@
 
                 climatedata = data;
                 console.log(climatedata)
-
-              });
-              for (let i = 0; i < climatedata.length; i++) {
+                for (let i = 0; i < climatedata.length; i++) {
               $("#form-row").append(
-                ' <tr><td>' + climatedata.ISO3[i] +
-                ' </td><td>' + climatedata.year[i] +
-                ' </td><td>' + climatedata.temperature[i] + ' </td></tr>');
+                ' <tr><td>' + climatedata[i].ISO3 +
+                ' </td><td>' + climatedata[i].year +
+                ' </td><td>' + climatedata[i].temperature + ' </td></tr>');
               }
+              });
+             
             })
         }
       }]
