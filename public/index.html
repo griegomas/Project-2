@@ -1074,9 +1074,6 @@
       <input type="button" value="Zoom Out" onclick="zoomOut();"/>
     </div>
     <script>
-      /**
-         * Create the map
-         */
       var map = AmCharts.makeChart("chartdiv", {
         "type": "map",
         "theme": "light",
@@ -1116,11 +1113,48 @@
 
               // Convert ISO2 > ISO3 ??
               console.log("working function: " + convertSelected(getSelectedCountries()));
+              console.log("working function: " + convertSelected(getSelectedCountries()));
+              var convertedISO3 = [];
+              var convertedISO3 = convertSelected(getSelectedCountries());
+              // tas = temperature; pr = precipitation
+              //how is this invoking apiRouts.js?
+              var queryURL = "/api/climate/" + convertedISO3[0];
+
+              $
+                .ajax({url: queryURL, method: "GET"})
+                .then(function (response) {
+
+                  console.log("response[1]: " + response[1]);
+                  // console.log("data[1]: " + response[1].year + " | " + response[1].data);
+                  for (let i = 0; i < response.length; i++) {
+                    // console.log("Year: " + response[i].year);
+                    // console.log("Data: " + response[i].data);
+
+                    temperatureISO3 = {
+                      ISO3: convertedISO3[0],
+                      year: response[i].year,
+                      temperature: response[i].data
+                    };
+
+                    console.log("temperatureISO3.ISO3: " + temperatureISO3.ISO3);
+                    console.log("temperatureISO3.year: " + temperatureISO3.year);
+                    console.log("temperatureISO3.temp: " + temperatureISO3.temperature);
+                    console.log("Hello, Globe!")
+
+                    $
+                      .post("/api/new", temperatureISO3)
+                      // On success, run the following code
+                      .then(function (data) {
+                        // Log the data we found
+                        console.log(data);
+                      });
+
+                  }
+                })
             }
           }
         ]
-      });
-
+      })
       /**
          * Function which extracts currently selected country list.
          * Returns array consisting of country ISO2 codes
@@ -1234,9 +1268,9 @@
 
             // $
             //   .post("/api/new", preISO3)
-            //   // On success, run the following code
+            //    On success, run the following code
             //   .then(function (data) {
-            //     // Log the data we found
+            //      Log the data we found
             //     console.log(data);
             //   });
 
