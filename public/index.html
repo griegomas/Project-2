@@ -1155,31 +1155,6 @@
                       console.log(data);
                     });
 
-                  // $("#form-row").append(
-                  // ' <tr><td>' + temperatureISO3.ISO3 +
-                  // ' </td><td>' + temperatureISO3.year +
-                  // ' </td><td>' + temperatureISO3.temperature + ' </td></tr>');
-
-
-                  // var newTr = $("<tr>");
-                  // newTr.data("temp", temperatureISO3);
-                  // newTr.append("<td>" + temperatureISO3.ISO3 + "</td>");
-                  // newTr.append("<td>" + temperatureISO3.year + "</td>");
-                  // newTr.append("<td>" + temperatureISO3.temperature + "</td>");
-                  // console.log(newTr.data)
-
-
-
-
-
-
-                  // // A function for rendering the list of authors to the page
-
-                  // formrow.prepend(newTr);
-
-
-                  // Function for handling what to render when there are no authors
-
                   console.log("temperatureISO3.ISO3: " + temperatureISO3.ISO3);
                   console.log("temperatureISO3.year: " + temperatureISO3.year);
                   console.log("temperatureISO3.temp: " + temperatureISO3.year);
@@ -1257,7 +1232,7 @@
         <tr>
           <th>ISO3</th>
           <th>Year</th>
-          <th>Temperature</th>
+          <th>Temperature (℃)</th>
         </tr>
       </thead>
       <tbody id="form-row">
@@ -1337,23 +1312,6 @@
           console.log("preISO3.pre: " + preISO3.precipitation);
           console.log("Hello, World!")
 
-          // $
-          //   .post("/api/new", preISO3)
-          //    On success, run the following code
-          //   .then(function (data) {
-          //      Log the data we found
-          //     console.log(data);
-          //   });
-
-          // Climate.create({
-          // 	ISO3: req.body.ISO3,
-          //   temperature: req.body.temperature,
-          // 	precipitation: req.body.precipitation,
-          // 	created_at: req.body.created_at
-          // });
-
-          // $("#search-list").append("Year: " + response[i].year + " | ");
-          // $("#search-list").append("Data: " + response[i].data + "<br>");
         }
       })
   });
