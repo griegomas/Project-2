@@ -4,7 +4,11 @@
 
 // Dependencies
 var Sequelize = require("sequelize");
-
+var connection;
+if (process.env.JAWSDB_URL) {
+    // Database is JawsDB on Heroku
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
 // Creates mySQL connection using Sequelize
 var sequelize = new Sequelize("climate_db", "root", "root", {
   host: "localhost",
@@ -16,6 +20,9 @@ var sequelize = new Sequelize("climate_db", "root", "root", {
     idle: 10000
   }
 });
+};
+
+var mysql = require('mysql');
 
 // Exports the connection for other files to use
 module.exports = sequelize;
